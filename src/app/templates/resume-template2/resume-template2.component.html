@@ -1,0 +1,40 @@
+<div class="max-w-3xl mx-auto bg-white p-0 text-[15px] leading-relaxed text-gray-900 font-[Calibri]">
+
+    <!-- Header -->
+    <header class="border-b border-gray-400 pb-3 mb-4">
+        <h1 class="text-2xl font-bold text-black">{{ formData?.fullName }}</h1>
+        <p class="text-sm">{{ formData?.role }}</p>
+        <p class="text-sm text-gray-700">
+            {{ formData?.email }} | {{ formData?.phone }}
+        </p>
+    </header>
+
+    <!-- Work Experience -->
+    @if (formData?.experience?.length) {
+    <section class="mb-6">
+        <h2 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-3 uppercase tracking-wide">Work Experience
+        </h2>
+        @for (exp of formData.experience; track $index) {
+        <div class="mb-4">
+            <p class="font-semibold text-black">{{ exp.jobTitle }}</p>
+            <p class="text-sm font-medium text-gray-800">{{ exp.company }} | <span class="italic">{{ exp.duration
+                    }}</span></p>
+            <p class="text-sm mt-1 text-gray-800">{{ exp.description }}</p>
+        </div>
+        }
+    </section>
+    }
+
+    <!-- Skills -->
+    @if (formData?.skills?.length) {
+    <section class="mb-6">
+        <h2 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-3 uppercase tracking-wide">Skills</h2>
+        <ul class="list-disc list-inside text-sm text-gray-800 columns-2 gap-x-10">
+            @for (skill of formData.skills; track $index) {
+            <li>{{ skill }}</li>
+            }
+        </ul>
+    </section>
+    }
+
+</div>

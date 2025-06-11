@@ -1,0 +1,105 @@
+<div class="min-h-screen bg-gray-100 py-10 px-4 md:px-20">
+    <h2 class="text-4xl font-bold text-center text-indigo-700 mb-10">Create Your Resume</h2>
+
+    <form [formGroup]="resumeForm" (ngSubmit)="onSubmit()" class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <input type="text" formControlName="fullName" class="w-full px-4 py-2 border rounded-md" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" formControlName="email" class="w-full px-4 py-2 border rounded-md" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                <input type="text" formControlName="phone" class="w-full px-4 py-2 border rounded-md" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Summary</label>
+                <textarea formControlName="summary" rows="3" class="w-full px-4 py-2 border rounded-md"></textarea>
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                    <span class="text-indigo-600 text-3xl">💼</span> Work Experience
+                </label>
+
+                <div formArrayName="experience" class="space-y-6">
+                    @for (exp of experienceControls; track $index) {
+                    <div [formGroupName]="$index"
+                        class="border border-gray-300 rounded-xl shadow-md bg-white p-6 transition duration-300 hover:shadow-lg">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Job Title -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Job Title</label>
+                                <input type="text" formControlName="jobTitle"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                            </div>
+
+                            <!-- Company -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Company</label>
+                                <input type="text" formControlName="company"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                            </div>
+
+                            <!-- Duration -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Duration</label>
+                                <input type="text" formControlName="duration"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                            </div>
+
+                            <!-- Description -->
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Description</label>
+                                <textarea formControlName="description" rows="3"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Remove Button -->
+                        <div class="text-right mt-4">
+                            <button type="button" (click)="removeExperience($index)"
+                                class="text-sm text-red-600 hover:text-red-800 transition flex items-center gap-1">
+                                <span class="text-lg">🗑️</span> Remove Experience
+                            </button>
+                        </div>
+                    </div>
+                    }
+                </div>
+
+                <!-- Add Experience Button -->
+                <div class="mt-6 text-center">
+                    <button type="button" (click)="addExperience()"
+                        class="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-2 rounded-full shadow-md hover:bg-indigo-700 transition duration-300">
+                        Add Experience
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Education</label>
+                <textarea formControlName="education" rows="3" class="w-full px-4 py-2 border rounded-md"></textarea>
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Skills</label>
+                <input type="text" formControlName="skills" placeholder="e.g., Angular, Tailwind, Node.js"
+                    class="w-full px-4 py-2 border rounded-md" />
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <button type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-full transition">
+                Generate Resume
+            </button>
+        </div>
+    </form>
+</div>

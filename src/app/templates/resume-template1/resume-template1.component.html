@@ -1,0 +1,128 @@
+<div class="max-w-4xl mx-auto bg-white shadow-xl p-10 rounded-xl border border-gray-200 space-y-6">
+
+    <!-- Header -->
+    <header class="text-center border-b pb-6">
+        <h1 class="text-3xl font-bold text-gray-800 tracking-tight mb-1">{{ formData?.fullName }}</h1>
+        <p class="text-indigo-600 text-base font-medium">{{ formData?.role }}</p>
+        <div class="text-gray-500 text-sm mt-1 space-x-1">
+            <span>{{ formData?.email }}</span>
+            <span>|</span>
+            <span>{{ formData?.phone }}</span>
+        </div>
+    </header>
+
+    <!-- Skills -->
+    @if (formData?.skills?.length) {
+    <section>
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Skills</h2>
+        <div class="flex flex-wrap gap-2">
+            @for (skill of formData.skills; track $index) {
+            <span
+                class="bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-medium shadow-sm whitespace-nowrap transition hover:bg-indigo-200">
+                {{ skill }}
+            </span>
+            }
+        </div>
+    </section>
+    }
+
+    <!-- Skills -->
+    @if (formData?.skills?.length) {
+    <section>
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Skills</h2>
+        <div class="flex flex-wrap gap-2">
+            @for (skill of formData.skills; track $index) {
+            <span
+                class="bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-medium shadow-sm whitespace-nowrap transition hover:bg-indigo-200">
+                {{ skill }}
+            </span>
+            }
+        </div>
+    </section>
+    }
+
+    <!-- Experience -->
+    @if (formData?.experience?.length) {
+    <section>
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Work Experience</h2>
+        <div class="space-y-6">
+            @for (exp of formData.experience; track $index) {
+            <div class="p-4 border-l-4 border-indigo-400 bg-gray-50 rounded-md shadow-sm">
+                <div class="flex justify-between items-center">
+                    <p class="text-lg font-semibold text-gray-800">{{ exp.jobTitle }}</p>
+                    <span class="text-sm text-gray-500 italic">{{ exp.duration }}</span>
+                </div>
+                <p class="text-indigo-700 font-medium">{{ exp.company }}</p>
+                <p class="text-gray-700 mt-2">{{ exp.description }}</p>
+            </div>
+            }
+        </div>
+    </section>
+    }
+
+    <!-- Projects -->
+    @if (formData?.projects?.length) {
+    <section>
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Projects</h2>
+        <div class="space-y-4">
+            @for (project of formData.projects; track $index) {
+            <div class="bg-gray-50 p-4 rounded-md border shadow-sm">
+                <p class="text-lg font-semibold text-gray-800">{{ project.title }}</p>
+                <p class="text-gray-700 mt-1">{{ project.description }}</p>
+                @if (project.link) {
+                <a [href]="project.link" target="_blank"
+                    class="text-indigo-600 text-sm hover:underline mt-1 inline-block">View
+                    Project</a>
+                }
+            </div>
+            }
+        </div>
+    </section>
+    }
+
+    <!-- Education -->
+    @if (formData?.education?.length) {
+    <section>
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Education</h2>
+        <div class="space-y-4">
+            @for (edu of formData.education; track $index) {
+            <div class="bg-gray-50 p-4 rounded-md border shadow-sm">
+                <p class="text-lg font-semibold text-gray-800">{{ edu.degree }}</p>
+                <p class="text-indigo-700">{{ edu.institute }}</p>
+                <p class="text-sm text-gray-500">{{ edu.duration }} - {{ edu.location }}</p>
+            </div>
+            }
+        </div>
+    </section>
+    }
+
+    <!-- Certifications -->
+    @if (formData?.certifications?.length) {
+    <section>
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Certifications</h2>
+        <ul class="list-disc list-inside space-y-2">
+            @for (cert of formData.certifications; track $index) {
+            <li>
+                <span class="font-medium text-gray-800">{{ cert.name }}</span> —
+                <span class="text-sm text-gray-600">{{ cert.issuer }}, {{ cert.year }}</span>
+            </li>
+            }
+        </ul>
+    </section>
+    }
+
+    <!-- Languages -->
+    @if (formData?.languages?.length) {
+    <section>
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Languages</h2>
+        <div class="flex flex-wrap gap-2">
+            @for (lang of formData.languages; track $index) {
+            <span
+                class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm font-medium shadow-sm whitespace-nowrap">
+                {{ lang }}
+            </span>
+            }
+        </div>
+    </section>
+    }
+</div>

@@ -1,0 +1,25 @@
+<!-- template-selector.component.html -->
+<div class="p-6">
+    <h2 class="text-2xl font-bold mb-6 text-center">Choose a Template</h2>
+    
+    <div class="grid md:grid-cols-3 gap-6">
+      @for (template of ['template1', 'template2', 'template3']; track $index) {
+        <div class="border rounded shadow p-4 cursor-pointer hover:ring-2 ring-indigo-500 transition"
+             (click)="selectTemplate(template)">
+          <p class="text-center font-medium capitalize">{{ template }}</p>
+          <!-- Could show thumbnail here -->
+          <img [src]="'assets/templates/' + template + '.png'" alt="{{template}} preview" />
+        </div>
+      }
+    </div>
+  
+    @if (selectedTemplate) {
+      <div class="mt-10">
+        <h3 class="text-xl font-semibold mb-4">Preview</h3>
+        <app-resume-template1 *ngIf="selectedTemplate === 'template1'" [formData]="formData" />
+        <app-resume-template2 *ngIf="selectedTemplate === 'template2'" [formData]="formData" />
+        <app-resume-template3 *ngIf="selectedTemplate === 'template3'" [formData]="formData" />
+      </div>
+    }
+  </div>
+  
