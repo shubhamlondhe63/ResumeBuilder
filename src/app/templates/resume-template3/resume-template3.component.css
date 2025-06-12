@@ -1,0 +1,177 @@
+/* Custom styles for Resume Template 3 */
+
+.resume-container {
+  font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+/* Profile Avatar Animation */
+.profile-avatar {
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+}
+
+/* Section Headers */
+.section-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981, #059669);
+  border-radius: 2px;
+}
+
+/* Card Hover Effects */
+.experience-card,
+.project-card,
+.education-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card::before,
+.project-card::before,
+.education-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.experience-card:hover::before,
+.project-card:hover::before,
+.education-card:hover::before {
+  left: 100%;
+}
+
+.experience-card:hover,
+.project-card:hover,
+.education-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Skill Tags Animation */
+.skill-tag {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.3s ease;
+}
+
+.skill-tag:hover::before {
+  left: 100%;
+}
+
+.skill-tag:hover {
+  transform: translateX(2px);
+  background-color: rgb(71, 85, 105) !important;
+}
+
+/* Contact Icons Animation */
+.contact-item {
+  transition: all 0.2s ease;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
+  color: rgb(16, 185, 129) !important;
+}
+
+/* Language Dots Animation */
+.language-dot {
+  transition: all 0.3s ease;
+}
+
+.language-item:hover .language-dot {
+  background-color: rgb(52, 211, 153) !important;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+}
+
+/* Professional Summary Enhancement */
+.summary-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(255, 255, 255, 1));
+}
+
+/* Print Styles */
+@media print {
+  .resume-container {
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  
+  .experience-card,
+  .project-card,
+  .education-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .profile-avatar:hover,
+  .skill-tag:hover,
+  .contact-item:hover {
+    transform: none !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .resume-container .flex {
+    flex-direction: column;
+  }
+  
+  .resume-container aside {
+    width: 100% !important;
+  }
+  
+  .resume-container main {
+    padding: 1rem !important;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #059669;
+}
