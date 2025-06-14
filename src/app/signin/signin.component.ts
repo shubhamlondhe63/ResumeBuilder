@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,6 +13,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { GoogleOAuthService } from '../services/google-oauth.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,18 +21,124 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css',
 })
-export class SigninComponent {
+export class SigninComponent implements OnInit, AfterViewInit {
+  @ViewChild('googleSigninButton', { static: false })
+  googleSigninButton!: ElementRef;
+  @ViewChild('googleSignupButton', { static: false })
+  googleSignupButton!: ElementRef;
+
   signinForm: FormGroup;
   isLoading = false;
   showPassword = false;
   errorMessage = '';
+  isGoogleLoading = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private googleOAuthService: GoogleOAuthService
+  ) {
     this.signinForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       rememberMe: [false],
     });
+  }
+
+  ngOnInit(): void {
+    this.initializeGoogleAuth();
+  }
+
+  ngAfterViewInit(): void {
+    // Render Google buttons after view is initialized
+    setTimeout(() => {
+      this.renderGoogleButtons();
+    }, 500);
+  }
+
+  private async initializeGoogleAuth(): Promise<void> {
+    try {
+      await this.googleOAuthService.initializeGoogleSignIn();
+      this.googleOAuthService.setCredentialHandler(
+        this.handleGoogleResponse.bind(this)
+      );
+    } catch (error) {
+      console.error('Failed to initialize Google Auth:', error);
+    }
+  }
+
+  private renderGoogleButtons(): void {
+    if (this.googleSigninButton?.nativeElement) {
+      this.googleOAuthService.renderButton(
+        this.googleSigninButton.nativeElement,
+        {
+          text: 'signin_with',
+          theme: 'outline',
+          size: 'large',
+        }
+      );
+    }
+
+    if (this.googleSignupButton?.nativeElement) {
+      this.googleOAuthService.renderButton(
+        this.googleSignupButton.nativeElement,
+        {
+          text: 'signup_with',
+          theme: 'filled_blue',
+          size: 'large',
+        }
+      );
+    }
+  }
+
+  private handleGoogleResponse(response: any): void {
+    try {
+      this.isGoogleLoading = true;
+      const userInfo = this.googleOAuthService.decodeJWT(response.credential);
+
+      if (userInfo) {
+        // Store user information
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem(
+          'google_user',
+          JSON.stringify({
+            id: userInfo.sub,
+            email: userInfo.email,
+            name: userInfo.name,
+            picture: userInfo.picture,
+            provider: 'google',
+          })
+        );
+        localStorage.setItem('userEmail', userInfo.email);
+
+        // Show success message
+        this.showSuccessMessage('Successfully signed in with Google!');
+
+        // Redirect to builder
+        setTimeout(() => {
+          this.router.navigate(['/builder']);
+        }, 1500);
+      }
+    } catch (error) {
+      console.error('Google sign-in error:', error);
+      this.errorMessage = 'Failed to sign in with Google. Please try again.';
+    } finally {
+      this.isGoogleLoading = false;
+    }
+  }
+
+  private showSuccessMessage(message: string): void {
+    // Clear any existing error
+    this.errorMessage = '';
+
+    // You could add a success message state here
+    console.log(message);
+
+    // Optional: Show a toast notification
+    if (typeof window !== 'undefined') {
+      // Simple alert for now - you could replace with a proper toast
+      window.alert(message);
+    }
   }
 
   get email() {

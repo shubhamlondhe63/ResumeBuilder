@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
     { path: '/', label: 'Home', icon: '🏠' },
     { path: '/builder', label: 'Resume Builder', icon: '📝' },
     { path: '/template-selector', label: 'Templates', icon: '🎨' },
+    { path: '/tips', label: 'ATS Tips', icon: '💡' },
   ];
 
   constructor(private router: Router) {}

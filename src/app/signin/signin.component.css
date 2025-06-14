@@ -1,12 +1,12 @@
-/* Animation for the form container */
+/* Main container animations */
 .signin-container {
-  animation: slideInUp 0.6s ease-out;
+  animation: fadeInUp 0.8s ease-out;
 }
 
-@keyframes slideInUp {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -14,75 +14,52 @@
   }
 }
 
-/* Logo animation */
-.logo-container {
-  animation: bounceIn 0.8s ease-out;
+/* Left panel background animation */
+.branding-panel {
+  background: linear-gradient(-45deg, #4f46e5, #7c3aed, #3b82f6, #6366f1);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
 
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
   }
   50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
+    background-position: 100% 50%;
   }
 }
 
-/* Input field enhancements */
-.input-field {
-  transition: all 0.3s ease;
+/* Professional input field styling */
+.form-input {
+  @apply block w-full rounded-xl border-gray-300 shadow-sm 
+         focus:border-indigo-500 focus:ring-indigo-500 
+         transition-all duration-200 ease-in-out;
 }
 
-.input-field:focus {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.1);
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-/* Button enhancements */
-.signin-button {
-  position: relative;
-  overflow: hidden;
+/* Enhanced button styling */
+.primary-button {
+  @apply inline-flex items-center justify-center px-6 py-3 
+         border border-transparent rounded-xl shadow-lg
+         text-base font-semibold text-white 
+         bg-gradient-to-r from-indigo-600 to-indigo-700
+         hover:from-indigo-700 hover:to-indigo-800
+         focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+         disabled:opacity-50 disabled:cursor-not-allowed 
+         transform transition-all duration-200 ease-in-out;
+}
+
+.primary-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.primary-button:active:not(:disabled) {
   transform: translateY(0);
-  transition: all 0.3s ease;
-}
-
-.signin-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
-}
-
-.signin-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-/* Shimmer effect for button */
-.signin-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: left 0.5s;
-}
-
-.signin-button:hover::before {
-  left: 100%;
 }
 
 /* Loading spinner enhancement */
@@ -189,73 +166,66 @@
   width: 100%;
 }
 
-/* Demo info box enhancement */
-.demo-info {
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  border: 1px solid #93c5fd;
-  animation: fadeIn 0.8s ease-out 0.3s both;
+/* Professional card styling */
+.info-card {
+  @apply bg-gradient-to-r from-indigo-50 to-blue-50 
+         border border-indigo-200 rounded-xl p-4
+         shadow-sm;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Enhanced responsive design */
+@media (max-width: 1024px) {
+  .branding-panel {
+    display: none;
   }
 }
 
-/* Responsive design enhancements */
 @media (max-width: 640px) {
   .signin-container {
     padding: 1rem;
   }
   
-  .logo-container {
-    width: 3rem;
-    height: 3rem;
-  }
-  
-  .signin-button {
-    padding: 0.75rem 1rem;
-    font-size: 0.875rem;
+  .form-container {
+    max-width: 100%;
+    padding: 1.5rem;
   }
 }
 
-/* Focus visible for accessibility */
-.signin-button:focus-visible,
-.input-field:focus-visible {
+/* Accessibility improvements */
+.focus-ring:focus-visible {
   outline: 2px solid #4f46e5;
   outline-offset: 2px;
 }
 
-/* Password visibility toggle */
-.password-toggle {
-  cursor: pointer;
-  transition: transform 0.2s ease;
+/* Icon animations */
+.icon-hover {
+  transition: transform 0.2s ease-in-out;
 }
 
-.password-toggle:hover {
-  transform: scale(1.1);
+.icon-hover:hover {
+  transform: scale(1.05);
 }
 
-/* Form validation states */
-.field-valid {
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+/* Smooth transitions for interactive elements */
+.interactive-element {
+  transition: all 0.2s ease-in-out;
 }
 
-.field-invalid {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+.interactive-element:hover {
+  transform: translateY(-1px);
 }
 
-/* Gradient text effect */
-.gradient-text {
-  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+/* Professional gradient text */
+.brand-gradient {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Glass morphism effect for the branding panel */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
