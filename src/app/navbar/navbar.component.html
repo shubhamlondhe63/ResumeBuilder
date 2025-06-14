@@ -1,0 +1,116 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+    <div class="navbar-container">
+        <!-- Logo & Brand -->
+        <div class="navbar-brand" (click)="navigateTo('/')">
+            <div class="logo-wrapper">
+                <div class="logo-icon">
+                    <span class="logo-emoji">📄</span>
+                    <div class="logo-shine"></div>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">ResumeBuilder</span>
+                    <span class="brand-tagline">Professional Resumes</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <div class="navbar-links desktop-only">
+            @for (link of navLinks; track link.path) {
+            <a [routerLink]="link.path" class="nav-link" [class.active]="isActiveRoute(link.path)"
+                (click)="closeMobileMenu()">
+                <span class="nav-icon">{{ link.icon }}</span>
+                <span class="nav-text">{{ link.label }}</span>
+                <div class="nav-highlight"></div>
+            </a>
+            }
+        </div>
+
+        <!-- Desktop Auth Section -->
+        <div class="navbar-auth desktop-only">
+            @if (isAuthenticated) {
+            <div class="user-menu">
+                <div class="user-avatar">
+                    <span class="user-initial">{{ getUserInitial() }}</span>
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="user-info">
+                    <span class="user-email">{{ userEmail }}</span>
+                    <span class="user-status">Online</span>
+                </div>
+                <button class="sign-out-btn" (click)="onSignOut()" title="Sign Out">
+                    <span>🚪</span>
+                </button>
+            </div>
+            } @else {
+            <button class="sign-in-btn" (click)="onSignIn()">
+                <span class="btn-icon">🔐</span>
+                <span class="btn-text">Sign In</span>
+                <div class="btn-shimmer"></div>
+            </button>
+            }
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn mobile-only" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()"
+            aria-label="Toggle mobile menu">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" [class.open]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+        <div class="mobile-menu-header">
+            <div class="mobile-logo">
+                <span class="mobile-logo-icon">📄</span>
+                <span class="mobile-brand-name">ResumeBuilder</span>
+            </div>
+            <button class="mobile-close-btn" (click)="closeMobileMenu()">
+                <span>✕</span>
+            </button>
+        </div>
+
+        <div class="mobile-menu-content">
+            <!-- Mobile Navigation Links -->
+            <div class="mobile-nav-links">
+                @for (link of navLinks; track link.path) {
+                <a [routerLink]="link.path" class="mobile-nav-link" [class.active]="isActiveRoute(link.path)"
+                    (click)="closeMobileMenu()">
+                    <span class="mobile-nav-icon">{{ link.icon }}</span>
+                    <span class="mobile-nav-text">{{ link.label }}</span>
+                    <span class="mobile-nav-arrow">→</span>
+                </a>
+                }
+            </div>
+
+            <!-- Mobile Auth Section -->
+            <div class="mobile-auth">
+                @if (isAuthenticated) {
+                <div class="mobile-user-info">
+                    <div class="mobile-user-avatar">
+                        <span>{{ getUserInitial() }}</span>
+                    </div>
+                    <div class="mobile-user-details">
+                        <span class="mobile-user-email">{{ userEmail }}</span>
+                        <span class="mobile-user-status">✅ Online</span>
+                    </div>
+                </div>
+                <button class="mobile-sign-out-btn" (click)="onSignOut()">
+                    <span class="mobile-btn-icon">🚪</span>
+                    <span class="mobile-btn-text">Sign Out</span>
+                </button>
+                } @else {
+                <button class="mobile-sign-in-btn" (click)="onSignIn()">
+                    <span class="mobile-btn-icon">🔐</span>
+                    <span class="mobile-btn-text">Sign In</span>
+                </button>
+                }
+            </div>
+        </div>
+    </div>
+</nav>

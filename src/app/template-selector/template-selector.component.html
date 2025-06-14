@@ -1,25 +1,277 @@
 <!-- template-selector.component.html -->
-<div class="p-6">
-    <h2 class="text-2xl font-bold mb-6 text-center">Choose a Template</h2>
-    
-    <div class="grid md:grid-cols-3 gap-6">
-      @for (template of ['template1', 'template2', 'template3']; track $index) {
-        <div class="border rounded shadow p-4 cursor-pointer hover:ring-2 ring-indigo-500 transition"
-             (click)="selectTemplate(template)">
-          <p class="text-center font-medium capitalize">{{ template }}</p>
-          <!-- Could show thumbnail here -->
-          <img [src]="'assets/templates/' + template + '.png'" alt="{{template}} preview" />
+<div class="template-selector-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="header-content">
+      <h1 class="main-title">
+        <span class="title-icon">🎨</span>
+        Choose Your Perfect Template
+      </h1>
+      <p class="subtitle">Select from our collection of professional resume templates</p>
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-number">{{ templates.length }}</span>
+          <span class="stat-label">Templates</span>
         </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ filteredTemplates.length }}</span>
+          <span class="stat-label">Available</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ categories.length - 1 }}</span>
+          <span class="stat-label">Categories</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search and Filter Section -->
+  <div class="filter-section">
+    <div class="filter-content">
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" [(ngModel)]="searchTerm" (input)="onSearchChange()"
+            placeholder="Search templates by name, style, or features..." class="search-input" />
+          @if (searchTerm) {
+          <button class="clear-search" (click)="searchTerm = ''; onSearchChange()">
+            <span>✕</span>
+          </button>
+          }
+        </div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="category-filter">
+        @for (category of categories; track category.id) {
+        <button class="category-btn" [class.active]="selectedCategory === category.id"
+          (click)="selectCategory(category.id)">
+          <span class="category-icon">{{ category.icon }}</span>
+          <span class="category-name">{{ category.name }}</span>
+          <span class="category-count">
+            {{ getCategoryCount(category.id) }}
+          </span>
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Info -->
+  <div class="results-info">
+    <div class="results-content">
+      <span class="results-text">
+        Showing {{ paginatedTemplates.length }} of {{ filteredTemplates.length }} templates
+      </span>
+      @if (searchTerm || selectedCategory !== 'all') {
+      <button class="clear-filters" (click)="searchTerm = ''; selectedCategory = 'all'; onSearchChange()">
+        <span>🔄</span>
+        Clear Filters
+      </button>
       }
     </div>
-  
-    @if (selectedTemplate) {
-      <div class="mt-10">
-        <h3 class="text-xl font-semibold mb-4">Preview</h3>
-        <app-resume-template1 *ngIf="selectedTemplate === 'template1'" [formData]="formData" />
-        <app-resume-template2 *ngIf="selectedTemplate === 'template2'" [formData]="formData" />
-        <app-resume-template3 *ngIf="selectedTemplate === 'template3'" [formData]="formData" />
+  </div>
+
+  <!-- Templates Grid -->
+  <div class="templates-grid">
+    @for (template of paginatedTemplates; track template.id) {
+    <div class="template-card" [class.premium]="template.premium">
+      <!-- Premium Badge -->
+      @if (template.premium) {
+      <div class="premium-badge">
+        <span class="premium-icon">👑</span>
+        <span class="premium-text">Premium</span>
       </div>
+      }
+
+      <!-- Popularity Badge -->
+      <div class="popularity-badge">
+        <span class="popularity-icon">⭐</span>
+        <span class="popularity-score">{{ template.popularity }}%</span>
+      </div>
+
+      <!-- Template Thumbnail -->
+      <div class="template-thumbnail">
+        <div class="thumbnail-placeholder">
+          <span class="placeholder-icon">📄</span>
+          <span class="placeholder-text">{{ template.name }}</span>
+        </div>
+        <div class="template-overlay">
+          <button class="preview-btn" (click)="selectTemplate(template.id)">
+            <span class="btn-icon">👁️</span>
+            <span class="btn-text">Preview</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Template Info -->
+      <div class="template-info">
+        <div class="template-header">
+          <h3 class="template-name">{{ template.name }}</h3>
+          <span class="template-category">{{ template.category | titlecase }}</span>
+        </div>
+
+        <p class="template-description">{{ template.description }}</p>
+
+        <!-- Features -->
+        <div class="template-features">
+          @for (feature of template.features; track feature) {
+          <span class="feature-tag">{{ feature }}</span>
+          }
+        </div>
+
+        <!-- Actions -->
+        <div class="template-actions">
+          <button class="action-btn secondary" (click)="selectTemplate(template.id)">
+            <span class="btn-icon">👁️</span>
+            <span class="btn-text">Preview</span>
+          </button>
+          <button class="action-btn primary" (click)="useTemplate(template.id)">
+            <span class="btn-icon">✨</span>
+            <span class="btn-text">Use Template</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- No Results -->
+    @if (filteredTemplates.length === 0) {
+    <div class="no-results">
+      <div class="no-results-content">
+        <span class="no-results-icon">🔍</span>
+        <h3 class="no-results-title">No templates found</h3>
+        <p class="no-results-text">Try adjusting your search terms or filters</p>
+        <button class="clear-filters-btn" (click)="searchTerm = ''; selectedCategory = 'all'; onSearchChange()">
+          <span>🔄</span>
+          Clear All Filters
+        </button>
+      </div>
+    </div>
     }
   </div>
-  
+
+  <!-- Pagination -->
+  @if (totalPages > 1) {
+  <div class="pagination-section">
+    <div class="pagination-content">
+      <button class="pagination-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+        <span>←</span>
+        <span>Previous</span>
+      </button>
+
+      <div class="pagination-numbers">
+        @if (currentPage > 3) {
+        <button class="page-btn" (click)="goToPage(1)">1</button>
+        @if (currentPage > 4) {
+        <span class="pagination-dots">...</span>
+        }
+        }
+
+        @for (page of pages; track page) {
+        <button class="page-btn" [class.active]="page === currentPage" (click)="goToPage(page)">
+          {{ page }}
+        </button>
+        }
+
+        @if (currentPage < totalPages - 2) { @if (currentPage < totalPages - 3) { <span class="pagination-dots">
+          ...</span>
+          }
+          <button class="page-btn" (click)="goToPage(totalPages)">{{ totalPages }}</button>
+          }
+      </div>
+
+      <button class="pagination-btn" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
+        <span>Next</span>
+        <span>→</span>
+      </button>
+    </div>
+  </div>
+  }
+
+  <!-- Template Preview Modal -->
+  @if (isPreviewMode && selectedTemplate) {
+  <div class="preview-modal-overlay" (click)="closePreview()">
+    <div class="preview-modal" (click)="$event.stopPropagation()">
+      <div class="preview-header">
+        <div class="preview-title">
+          <h2>{{ getTemplate(selectedTemplate)?.name }}</h2>
+          <span class="preview-category">{{ getTemplate(selectedTemplate)?.category | titlecase }}</span>
+        </div>
+        <button class="close-preview" (click)="closePreview()">
+          <span>✕</span>
+        </button>
+      </div>
+
+      <div class="preview-content">
+        <div class="preview-template">
+          <!-- Template Preview Placeholder -->
+          <div class="template-placeholder">
+            <span class="placeholder-icon">📄</span>
+            <h3>{{ getTemplate(selectedTemplate)?.name }} Template</h3>
+            <p>{{ getTemplate(selectedTemplate)?.description }}</p>
+            <div class="placeholder-features">
+              @for (feature of getTemplate(selectedTemplate)?.features || []; track feature) {
+              <span class="feature-tag">{{ feature }}</span>
+              }
+            </div>
+            <div class="preview-note">
+              <span class="note-icon">💡</span>
+              <span>Template preview will be generated with your data</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-sidebar">
+          <div class="template-details">
+            <h3>Template Details</h3>
+            <p class="template-description">{{ getTemplate(selectedTemplate)?.description }}</p>
+
+            <div class="detail-section">
+              <h4>Features</h4>
+              <div class="features-list">
+                @for (feature of getTemplate(selectedTemplate)?.features || []; track feature) {
+                <div class="feature-item">
+                  <span class="feature-icon">✓</span>
+                  <span class="feature-text">{{ feature }}</span>
+                </div>
+                }
+              </div>
+            </div>
+
+            <div class="detail-section">
+              <h4>Category</h4>
+              <span class="category-tag">{{ getTemplate(selectedTemplate)?.category | titlecase }}</span>
+            </div>
+
+            <div class="detail-section">
+              <h4>Popularity</h4>
+              <div class="popularity-meter">
+                <div class="popularity-bar">
+                  <div class="popularity-fill" [style.width.%]="getTemplate(selectedTemplate)?.popularity || 0">
+                  </div>
+                </div>
+                <span class="popularity-text">{{ getTemplate(selectedTemplate)?.popularity }}% popularity</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-actions">
+            <button class="preview-action-btn secondary" (click)="downloadTemplate(selectedTemplate!)">
+              <span class="btn-icon">💾</span>
+              <span class="btn-text">Download</span>
+            </button>
+            <button class="preview-action-btn primary" (click)="useTemplate(selectedTemplate!)">
+              <span class="btn-icon">✨</span>
+              <span class="btn-text">Use This Template</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

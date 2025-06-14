@@ -6,3 +6,33 @@ a {
     transform: scale(1.05);
   }
   
+/* Main content container */
+.main-content {
+  padding-top: 70px; /* Account for fixed navbar height */
+  min-height: 100vh;
+}
+
+/* Responsive padding for mobile */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 60px; /* Smaller navbar on mobile */
+  }
+}
+
+/* Ensure smooth transitions when navbar changes */
+.main-content {
+  transition: padding-top 0.3s ease;
+}
+
+/* Global body styles to prevent horizontal scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure content doesn't get hidden behind navbar */
+* {
+  box-sizing: border-box;
+}
+  
