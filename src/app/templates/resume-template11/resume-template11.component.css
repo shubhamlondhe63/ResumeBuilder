@@ -1,0 +1,354 @@
+/* Elegant Template - Sophisticated Design */
+.elegant-resume {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  color: #2c3e50;
+  line-height: 1.7;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Elegant Header */
+.elegant-header {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: 60px 50px;
+  text-align: center;
+  position: relative;
+}
+
+.header-content {
+  margin-bottom: 30px;
+}
+
+.elegant-name {
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+}
+
+.elegant-title {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin: 0 0 30px 0;
+  font-style: italic;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.elegant-contact {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.header-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.decoration-line {
+  width: 60px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.decoration-dot {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* Main Content */
+.elegant-main {
+  padding: 50px;
+}
+
+.elegant-section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #2c3e50;
+  margin: 0 0 30px 0;
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Playfair Display', serif;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: #2c3e50;
+}
+
+/* Summary Container */
+.summary-container {
+  background: #f8f9fa;
+  padding: 35px;
+  border-radius: 8px;
+  border-left: 4px solid #2c3e50;
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.1);
+}
+
+.summary-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #34495e;
+  margin: 0;
+  text-align: justify;
+  font-family: 'Georgia', serif;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.skill-elegant {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.skill-elegant:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15);
+  border-color: #2c3e50;
+}
+
+.skill-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+  font-family: 'Georgia', serif;
+}
+
+/* Experience Timeline */
+.experience-timeline {
+  space-y: 40px;
+}
+
+.experience-elegant {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.experience-elegant:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(44, 62, 80, 0.15);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.position-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.experience-period {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.organization-name {
+  font-size: 1.1rem;
+  color: #34495e;
+  font-weight: 500;
+  margin: 10px 0 15px 0;
+  font-family: 'Georgia', serif;
+}
+
+.position-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #5a6c7d;
+  margin: 0;
+  font-family: 'Georgia', serif;
+}
+
+/* Education Elegant */
+.education-elegant {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.education-item {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(44, 62, 80, 0.15);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 15px;
+}
+
+.academic-degree {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.academic-period {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.institution-name {
+  font-size: 1rem;
+  color: #34495e;
+  font-weight: 500;
+  margin: 10px 0 8px 0;
+  font-family: 'Georgia', serif;
+}
+
+.institution-location {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0;
+  font-family: 'Georgia', serif;
+}
+
+/* Achievements Elegant */
+.achievements-elegant {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.achievement-item {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.achievement-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(44, 62, 80, 0.15);
+  border-color: #2c3e50;
+}
+
+.achievement-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.achievement-details {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'Georgia', serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .elegant-header {
+    padding: 40px 30px;
+  }
+  
+  .elegant-name {
+    font-size: 2.8rem;
+  }
+  
+  .elegant-main {
+    padding: 40px 30px;
+  }
+  
+  .experience-header,
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .education-elegant {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievements-elegant {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .elegant-contact {
+    gap: 25px;
+  }
+}

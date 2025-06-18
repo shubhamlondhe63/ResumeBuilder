@@ -1,0 +1,92 @@
+<!-- Minimalist Template - Clean Simple Design -->
+<div class="minimalist-resume">
+    <!-- Minimalist Header -->
+    <header class="minimalist-header">
+        <h1 class="minimalist-name">{{ formData?.fullName }}</h1>
+        <p class="minimalist-title">{{ formData?.role }}</p>
+        <div class="minimalist-contact">
+            <span>{{ formData?.email }}</span>
+            <span class="separator">•</span>
+            <span>{{ formData?.phone }}</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="minimalist-main">
+        <!-- Clean Summary -->
+        @if (formData?.summary) {
+        <section class="minimalist-section">
+            <h2 class="section-title">About</h2>
+            <p class="summary-text">{{ formData.summary }}</p>
+        </section>
+        }
+
+        <!-- Simple Skills -->
+        @if (getSkills().length) {
+        <section class="minimalist-section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-list">
+                @for (skill of getSkills(); track $index) {
+                <span class="skill-item">{{ skill }}</span>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Clean Experience -->
+        @if (formData?.experience?.length) {
+        <section class="minimalist-section">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-list">
+                @for (exp of formData.experience; track $index) {
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="job-title">{{ exp.jobTitle }}</h3>
+                        <span class="job-period">{{ getDurationText(exp.fromYear, exp.toYear, exp.isPresent) }}</span>
+                    </div>
+                    <p class="company-name">{{ exp.company }}</p>
+                    <p class="job-description">{{ exp.description }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Simple Education -->
+        @if (formData?.education?.length) {
+        <section class="minimalist-section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-list">
+                @for (edu of formData.education; track $index) {
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="degree-name">{{ edu.degree }}</h3>
+                        <span class="education-period">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent)
+                            }}</span>
+                    </div>
+                    <p class="institute-name">{{ edu.institute }}</p>
+                    @if (edu.location) {
+                    <p class="institute-location">{{ edu.location }}</p>
+                    }
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Clean Certifications -->
+        @if (formData?.certifications?.length) {
+        <section class="minimalist-section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-list">
+                @for (cert of formData.certifications; track $index) {
+                <div class="certification-item">
+                    <h4 class="certification-name">{{ cert.name }}</h4>
+                    <p class="certification-info">{{ cert.issuer }}, {{ cert.year }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+    </main>
+</div>

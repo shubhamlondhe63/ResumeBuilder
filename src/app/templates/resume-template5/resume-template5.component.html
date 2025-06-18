@@ -1,0 +1,109 @@
+<!-- Corporate Template - Clean Business Design -->
+<div class="corporate-resume">
+    <!-- Header -->
+    <header class="corporate-header">
+        <div class="header-left">
+            <h1 class="corporate-name">{{ formData?.fullName }}</h1>
+            <p class="corporate-title">{{ formData?.role }}</p>
+        </div>
+        <div class="header-right">
+            <div class="contact-info">
+                <div class="contact-line">
+                    <span class="contact-label">Email:</span>
+                    <span class="contact-value">{{ formData?.email }}</span>
+                </div>
+                <div class="contact-line">
+                    <span class="contact-label">Phone:</span>
+                    <span class="contact-value">{{ formData?.phone }}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="corporate-main">
+        <!-- Professional Summary -->
+        @if (formData?.summary) {
+        <section class="corporate-section">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="section-content">
+                <p class="summary-text">{{ formData.summary }}</p>
+            </div>
+        </section>
+        }
+
+        <!-- Key Skills -->
+        @if (getSkills().length) {
+        <section class="corporate-section">
+            <h2 class="section-title">Key Skills</h2>
+            <div class="section-content">
+                <div class="skills-list">
+                    @for (skill of getSkills(); track $index) {
+                    <span class="skill-tag">{{ skill }}</span>
+                    }
+                </div>
+            </div>
+        </section>
+        }
+
+        <!-- Professional Experience -->
+        @if (formData?.experience?.length) {
+        <section class="corporate-section">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="section-content">
+                @for (exp of formData.experience; track $index) {
+                <div class="experience-block">
+                    <div class="experience-header">
+                        <h3 class="job-title">{{ exp.jobTitle }}</h3>
+                        <span class="job-period">{{ getDurationText(exp.fromYear, exp.toYear, exp.isPresent) }}</span>
+                    </div>
+                    <p class="company-name">{{ exp.company }}</p>
+                    <div class="job-description">
+                        <p>{{ exp.description }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Education -->
+        @if (formData?.education?.length) {
+        <section class="corporate-section">
+            <h2 class="section-title">Education</h2>
+            <div class="section-content">
+                @for (edu of formData.education; track $index) {
+                <div class="education-block">
+                    <div class="education-header">
+                        <h3 class="degree-name">{{ edu.degree }}</h3>
+                        <span class="education-period">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent)
+                            }}</span>
+                    </div>
+                    <p class="institute-name">{{ edu.institute }}</p>
+                    @if (edu.location) {
+                    <p class="institute-location">{{ edu.location }}</p>
+                    }
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Certifications -->
+        @if (formData?.certifications?.length) {
+        <section class="corporate-section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="section-content">
+                <div class="certifications-list">
+                    @for (cert of formData.certifications; track $index) {
+                    <div class="certification-item">
+                        <span class="cert-name">{{ cert.name }}</span>
+                        <span class="cert-issuer">{{ cert.issuer }}, {{ cert.year }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+        }
+    </main>
+</div>

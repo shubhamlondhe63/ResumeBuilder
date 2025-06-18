@@ -1,0 +1,101 @@
+<!-- Distinguished Template - Elegant Professional Design -->
+<div class="distinguished-resume">
+    <!-- Header -->
+    <header class="distinguished-header">
+        <div class="header-content">
+            <h1 class="distinguished-name">{{ formData?.fullName }}</h1>
+            <p class="distinguished-title">{{ formData?.role }}</p>
+            <div class="distinguished-contact">
+                <span class="contact-item">{{ formData?.email }}</span>
+                <span class="contact-divider">|</span>
+                <span class="contact-item">{{ formData?.phone }}</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="distinguished-main">
+        <!-- Professional Summary -->
+        @if (formData?.summary) {
+        <section class="distinguished-section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary-text">{{ formData.summary }}</p>
+        </section>
+        }
+
+        <!-- Core Competencies -->
+        @if (getSkills().length) {
+        <section class="distinguished-section">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="competencies-grid">
+                @for (skill of getSkills(); track $index) {
+                <div class="competency-item">{{ skill }}</div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Professional Experience -->
+        @if (formData?.experience?.length) {
+        <section class="distinguished-section">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                @for (exp of formData.experience; track $index) {
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="experience-header">
+                            <h3 class="job-title">{{ exp.jobTitle }}</h3>
+                            <span class="job-duration">{{ getDurationText(exp.fromYear, exp.toYear, exp.isPresent)
+                                }}</span>
+                        </div>
+                        <p class="company-name">{{ exp.company }}</p>
+                        <p class="job-description">{{ exp.description }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Education -->
+        @if (formData?.education?.length) {
+        <section class="distinguished-section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                @for (edu of formData.education; track $index) {
+                <div class="timeline-item">
+                    <div class="timeline-marker education-marker"></div>
+                    <div class="timeline-content">
+                        <div class="education-header">
+                            <h3 class="degree-name">{{ edu.degree }}</h3>
+                            <span class="education-duration">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent)
+                                }}</span>
+                        </div>
+                        <p class="institute-name">{{ edu.institute }}</p>
+                        @if (edu.location) {
+                        <p class="institute-location">{{ edu.location }}</p>
+                        }
+                    </div>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Certifications -->
+        @if (formData?.certifications?.length) {
+        <section class="distinguished-section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-grid">
+                @for (cert of formData.certifications; track $index) {
+                <div class="certification-card">
+                    <h4 class="cert-name">{{ cert.name }}</h4>
+                    <p class="cert-details">{{ cert.issuer }}, {{ cert.year }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+    </main>
+</div>

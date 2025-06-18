@@ -2,6 +2,24 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResumeTemplate1Component } from '../templates/resume-template1/resume-template1.component';
+import { ResumeTemplate2Component } from '../templates/resume-template2/resume-template2.component';
+import { ResumeTemplate3Component } from '../templates/resume-template3/resume-template3.component';
+import { ResumeTemplate4Component } from '../templates/resume-template4/resume-template4.component';
+import { ResumeTemplate5Component } from '../templates/resume-template5/resume-template5.component';
+import { ResumeTemplate6Component } from '../templates/resume-template6/resume-template6.component';
+import { ResumeTemplate7Component } from '../templates/resume-template7/resume-template7.component';
+import { ResumeTemplate8Component } from '../templates/resume-template8/resume-template8.component';
+import { ResumeTemplate9Component } from '../templates/resume-template9/resume-template9.component';
+import { ResumeTemplate10Component } from '../templates/resume-template10/resume-template10.component';
+import { ResumeTemplate11Component } from '../templates/resume-template11/resume-template11.component';
+import { ResumeTemplate12Component } from '../templates/resume-template12/resume-template12.component';
+import { ResumeTemplate13Component } from '../templates/resume-template13/resume-template13.component';
+import { ResumeTemplate14Component } from '../templates/resume-template14/resume-template14.component';
+import { ResumeTemplate15Component } from '../templates/resume-template15/resume-template15.component';
+import { ResumeTemplate16Component } from '../templates/resume-template16/resume-template16.component';
+import { ResumeTemplate17Component } from '../templates/resume-template17/resume-template17.component';
+import { ResumeTemplate18Component } from '../templates/resume-template18/resume-template18.component';
 
 interface Template {
   id: string;
@@ -17,7 +35,28 @@ interface Template {
 
 @Component({
   selector: 'app-template-selector',
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ResumeTemplate1Component,
+    ResumeTemplate2Component,
+    ResumeTemplate3Component,
+    ResumeTemplate4Component,
+    ResumeTemplate5Component,
+    ResumeTemplate6Component,
+    ResumeTemplate7Component,
+    ResumeTemplate8Component,
+    ResumeTemplate9Component,
+    ResumeTemplate10Component,
+    ResumeTemplate11Component,
+    ResumeTemplate12Component,
+    ResumeTemplate13Component,
+    ResumeTemplate14Component,
+    ResumeTemplate15Component,
+    ResumeTemplate16Component,
+    ResumeTemplate17Component,
+    ResumeTemplate18Component,
+  ],
   templateUrl: './template-selector.component.html',
   styleUrl: './template-selector.component.css',
 })
@@ -48,7 +87,7 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'modern',
       description: 'Clean modern design with bold typography',
       features: ['Modern Layout', 'Bold Typography', 'Color Accents'],
-      premium: false,
+      premium: true,
       popularity: 95,
       thumbnail: 'assets/templates/template1-thumb.jpg',
       preview: 'assets/templates/template1-preview.jpg',
@@ -59,7 +98,7 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'modern',
       description: 'Contemporary style with elegant spacing',
       features: ['Contemporary Design', 'Elegant Spacing', 'Professional'],
-      premium: false,
+      premium: true,
       popularity: 88,
       thumbnail: 'assets/templates/template2-thumb.jpg',
       preview: 'assets/templates/template2-preview.jpg',
@@ -70,7 +109,7 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'modern',
       description: 'Sophisticated two-column layout with gradients',
       features: ['Two-Column Layout', 'Gradient Design', 'Modern Icons'],
-      premium: false,
+      premium: true,
       popularity: 92,
       thumbnail: 'assets/templates/template3-thumb.jpg',
       preview: 'assets/templates/template3-preview.jpg',
@@ -94,7 +133,7 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'professional',
       description: 'Traditional business format',
       features: ['Business Format', 'Clean Lines', 'Professional'],
-      premium: false,
+      premium: true,
       popularity: 85,
       thumbnail: 'assets/templates/template5-thumb.jpg',
       preview: 'assets/templates/template5-preview.jpg',
@@ -129,7 +168,7 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'creative',
       description: 'Colorful design for creative professionals',
       features: ['Colorful Design', 'Creative Elements', 'Eye-catching'],
-      premium: false,
+      premium: true,
       popularity: 79,
       thumbnail: 'assets/templates/template8-thumb.jpg',
       preview: 'assets/templates/template8-preview.jpg',
@@ -153,7 +192,7 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'minimalist',
       description: 'Clean and simple minimalist design',
       features: ['Minimalist', 'Clean Lines', 'Simple Layout'],
-      premium: false,
+      premium: true,
       popularity: 91,
       thumbnail: 'assets/templates/template10-thumb.jpg',
       preview: 'assets/templates/template10-preview.jpg',
@@ -164,7 +203,7 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'minimalist',
       description: 'Ultra-clean design with focus on content',
       features: ['Ultra-clean', 'Content-focused', 'Minimal Design'],
-      premium: false,
+      premium: true,
       popularity: 88,
       thumbnail: 'assets/templates/template11-thumb.jpg',
       preview: 'assets/templates/template11-preview.jpg',
@@ -188,7 +227,7 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'traditional',
       description: 'Timeless traditional resume format',
       features: ['Traditional Format', 'Timeless Design', 'Professional'],
-      premium: false,
+      premium: true,
       popularity: 84,
       thumbnail: 'assets/templates/template13-thumb.jpg',
       preview: 'assets/templates/template13-preview.jpg',
@@ -199,19 +238,19 @@ export class TemplateSelectorComponent implements OnInit {
       category: 'traditional',
       description: 'Classic business style with modern touches',
       features: ['Classic Style', 'Business Format', 'Modern Touches'],
-      premium: false,
-      popularity: 81,
+      premium: true,
+      popularity: 83,
       thumbnail: 'assets/templates/template14-thumb.jpg',
       preview: 'assets/templates/template14-preview.jpg',
     },
     {
       id: 'template15',
-      name: 'Formal',
+      name: 'Legacy',
       category: 'traditional',
-      description: 'Formal business document style',
-      features: ['Formal Style', 'Business Document', 'Professional'],
-      premium: false,
-      popularity: 83,
+      description: 'Traditional format with professional appeal',
+      features: ['Traditional Format', 'Professional Appeal', 'Classic Design'],
+      premium: true,
+      popularity: 85,
       thumbnail: 'assets/templates/template15-thumb.jpg',
       preview: 'assets/templates/template15-preview.jpg',
     },
@@ -222,9 +261,9 @@ export class TemplateSelectorComponent implements OnInit {
       name: 'Scholar',
       category: 'academic',
       description: 'Perfect for academic and research positions',
-      features: ['Academic Format', 'Research-focused', 'Detailed Layout'],
+      features: ['Academic Focus', 'Research-oriented', 'Professional'],
       premium: true,
-      popularity: 78,
+      popularity: 81,
       thumbnail: 'assets/templates/template16-thumb.jpg',
       preview: 'assets/templates/template16-preview.jpg',
     },
@@ -232,80 +271,89 @@ export class TemplateSelectorComponent implements OnInit {
       id: 'template17',
       name: 'Research',
       category: 'academic',
-      description: 'Comprehensive layout for researchers',
-      features: ['Research Layout', 'Comprehensive', 'Academic'],
+      description: 'Research-focused design for academics',
+      features: ['Research-focused', 'Academic Style', 'Publication-ready'],
       premium: true,
-      popularity: 76,
+      popularity: 87,
       thumbnail: 'assets/templates/template17-thumb.jpg',
       preview: 'assets/templates/template17-preview.jpg',
     },
     {
       id: 'template18',
-      name: 'Professor',
+      name: 'Academic',
       category: 'academic',
-      description: 'Designed for faculty and educators',
-      features: ['Faculty Design', 'Educational', 'Comprehensive'],
+      description: 'Traditional academic format',
+      features: ['Academic Format', 'Traditional Style', 'Professional'],
       premium: true,
-      popularity: 77,
+      popularity: 79,
       thumbnail: 'assets/templates/template18-thumb.jpg',
       preview: 'assets/templates/template18-preview.jpg',
-    },
-
-    // Additional Modern Templates
-    {
-      id: 'template19',
-      name: 'Fusion',
-      category: 'modern',
-      description: 'Blend of modern and professional elements',
-      features: ['Fusion Design', 'Modern Professional', 'Balanced'],
-      premium: true,
-      popularity: 85,
-      thumbnail: 'assets/templates/template19-thumb.jpg',
-      preview: 'assets/templates/template19-preview.jpg',
-    },
-    {
-      id: 'template20',
-      name: 'Nexus',
-      category: 'modern',
-      description: 'Next-generation resume design',
-      features: ['Next-gen Design', 'Innovative Layout', 'Modern'],
-      premium: true,
-      popularity: 87,
-      thumbnail: 'assets/templates/template20-thumb.jpg',
-      preview: 'assets/templates/template20-preview.jpg',
-    },
-    {
-      id: 'template21',
-      name: 'Digital',
-      category: 'creative',
-      description: 'Perfect for digital professionals',
-      features: ['Digital Design', 'Tech-oriented', 'Modern Elements'],
-      premium: false,
-      popularity: 80,
-      thumbnail: 'assets/templates/template21-thumb.jpg',
-      preview: 'assets/templates/template21-preview.jpg',
-    },
-    {
-      id: 'template22',
-      name: 'Elegant',
-      category: 'professional',
-      description: 'Sophisticated and elegant design',
-      features: ['Sophisticated', 'Elegant Design', 'Professional'],
-      premium: true,
-      popularity: 88,
-      thumbnail: 'assets/templates/template22-thumb.jpg',
-      preview: 'assets/templates/template22-preview.jpg',
     },
   ];
 
   constructor(private router: Router) {
+    // Get form data from router state
     const navigation = this.router.getCurrentNavigation();
-    this.formData = navigation?.extras?.state?.['formData'] || {};
+    if (navigation?.extras.state) {
+      this.formData = navigation.extras.state['formData'];
+    }
   }
 
   ngOnInit() {
-    // Sort templates by popularity by default
-    this.templates.sort((a, b) => b.popularity - a.popularity);
+    // If no form data is available, generate sample data for previews
+    if (!this.formData) {
+      this.formData = this.generateSampleData();
+    }
+  }
+
+  // Generate sample data for previews when no form data is available
+  generateSampleData() {
+    return {
+      fullName: 'John Doe',
+      email: 'john.doe@email.com',
+      phone: '+1 (555) 123-4567',
+      role: 'Senior Software Engineer',
+      skills: [
+        'JavaScript',
+        'TypeScript',
+        'React',
+        'Angular',
+        'Node.js',
+        'Python',
+        'AWS',
+        'Docker',
+      ],
+      experience: [
+        {
+          jobTitle: 'Senior Software Engineer',
+          company: 'Tech Solutions Inc.',
+          fromYear: '2020',
+          toYear: '2023',
+          isPresent: false,
+          description:
+            'Led development of scalable web applications using React and Node.js. Managed a team of 5 developers and implemented CI/CD pipelines.',
+        },
+        {
+          jobTitle: 'Software Developer',
+          company: 'Innovation Labs',
+          fromYear: '2018',
+          toYear: '2020',
+          isPresent: false,
+          description:
+            'Developed full-stack applications using Angular and Python. Collaborated with cross-functional teams to deliver high-quality software.',
+        },
+      ],
+      education: [
+        {
+          degree: 'Bachelor of Science in Computer Science',
+          institute: 'University of Technology',
+          fromYear: '2014',
+          toYear: '2018',
+          isPresent: false,
+          location: 'New York, NY',
+        },
+      ],
+    };
   }
 
   get filteredTemplates(): Template[] {

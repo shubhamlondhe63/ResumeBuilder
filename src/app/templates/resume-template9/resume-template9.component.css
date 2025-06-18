@@ -1,0 +1,483 @@
+/* Innovation Template - Tech-Focused Design */
+.innovation-resume {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  font-family: 'Courier New', monospace;
+  color: #1a202c;
+  overflow: hidden;
+}
+
+/* Tech Header */
+.innovation-header {
+  position: relative;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%);
+  color: white;
+  padding: 50px 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.tech-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+}
+
+.circuit-lines {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.circuit-line {
+  position: absolute;
+  background: #00ff88;
+  border-radius: 2px;
+}
+
+.line-1 {
+  width: 200px;
+  height: 2px;
+  top: 30px;
+  left: 10%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.line-2 {
+  width: 150px;
+  height: 2px;
+  top: 80px;
+  right: 15%;
+  animation: pulse 3s ease-in-out infinite 1s;
+}
+
+.line-3 {
+  width: 100px;
+  height: 2px;
+  bottom: 40px;
+  left: 20%;
+  animation: pulse 3s ease-in-out infinite 2s;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.tech-dots {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+}
+
+.dot-1 {
+  top: 25px;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.dot-2 {
+  top: 75px;
+  right: 20%;
+  animation-delay: 0.5s;
+}
+
+.dot-3 {
+  bottom: 35px;
+  left: 25%;
+  animation-delay: 1s;
+}
+
+.dot-4 {
+  bottom: 60px;
+  right: 10%;
+  animation-delay: 1.5s;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.innovation-name {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+}
+
+.innovation-title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  color: #00ff88;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.innovation-contact {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.tech-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  background: rgba(0, 255, 136, 0.1);
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tech-contact:hover {
+  background: rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px);
+}
+
+.tech-icon {
+  font-size: 1.2rem;
+}
+
+/* Main Content */
+.innovation-main {
+  padding: 40px;
+}
+
+.innovation-section {
+  margin-bottom: 45px;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #00ff88;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #00ff88, #1a202c);
+  border-radius: 2px;
+}
+
+/* Tech Summary */
+.tech-summary {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 5px solid #00ff88;
+  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.1);
+}
+
+.summary-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #2d3748;
+  margin: 0;
+  text-align: justify;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Tech Stack */
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.tech-skill {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.tech-skill:hover {
+  transform: translateY(-5px);
+  border-color: #00ff88;
+  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.2);
+}
+
+.skill-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.skill-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Innovation Timeline */
+.innovation-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.innovation-timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #00ff88, #1a202c);
+  border-radius: 2px;
+}
+
+.innovation-node {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.node-connector {
+  position: absolute;
+  left: -23px;
+  top: 15px;
+  width: 10px;
+  height: 10px;
+  background: #00ff88;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #00ff88;
+}
+
+.node-content {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #00ff88;
+  margin-left: 20px;
+}
+
+.node-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.role-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.tech-period {
+  font-size: 0.9rem;
+  color: #718096;
+  background: #f7fafc;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  color: #4a5568;
+  font-weight: 600;
+  margin: 10px 0 12px 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.role-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #718096;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Tech Education */
+.tech-education {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.education-module {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #00ff88;
+  transition: all 0.3s ease;
+}
+
+.education-module:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 255, 136, 0.15);
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.degree-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.module-period {
+  font-size: 0.9rem;
+  color: #718096;
+  background: #f7fafc;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.institute-name {
+  font-size: 1rem;
+  color: #4a5568;
+  font-weight: 600;
+  margin: 10px 0 8px 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.institute-location {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Achievements Grid */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.achievement-module {
+  background: linear-gradient(135deg, #fff 0%, #f7fafc 100%);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.achievement-module:hover {
+  transform: translateY(-5px);
+  border-color: #00ff88;
+  box-shadow: 0 12px 35px rgba(0, 255, 136, 0.2);
+}
+
+.module-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.achievement-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 10px 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.achievement-details {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0;
+  font-weight: 500;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .innovation-header {
+    padding: 40px 20px;
+  }
+  
+  .innovation-name {
+    font-size: 2.5rem;
+  }
+  
+  .innovation-main {
+    padding: 30px 20px;
+  }
+  
+  .node-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .tech-education {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tech-stack {
+    grid-template-columns: 1fr;
+  }
+  
+  .innovation-timeline {
+    padding-left: 30px;
+  }
+  
+  .node-content {
+    margin-left: 15px;
+  }
+}

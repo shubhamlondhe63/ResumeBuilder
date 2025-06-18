@@ -1,0 +1,105 @@
+<!-- Professional Template - Business-Focused Design -->
+<div class="professional-resume">
+    <!-- Professional Header -->
+    <header class="professional-header">
+        <div class="header-content">
+            <h1 class="professional-name">{{ formData?.fullName }}</h1>
+            <p class="professional-title">{{ formData?.role }}</p>
+            <div class="professional-contact">
+                <div class="contact-info">
+                    <span class="contact-icon">📧</span>
+                    <span>{{ formData?.email }}</span>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-icon">📱</span>
+                    <span>{{ formData?.phone }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-divider"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="professional-main">
+        <!-- Executive Summary -->
+        @if (formData?.summary) {
+        <section class="professional-section">
+            <h2 class="section-title">Executive Summary</h2>
+            <div class="summary-professional">
+                <p class="summary-text">{{ formData.summary }}</p>
+            </div>
+        </section>
+        }
+
+        <!-- Core Competencies -->
+        @if (getSkills().length) {
+        <section class="professional-section">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="competencies-grid">
+                @for (skill of getSkills(); track $index) {
+                <div class="competency-item">
+                    <span class="competency-name">{{ skill }}</span>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Professional Experience -->
+        @if (formData?.experience?.length) {
+        <section class="professional-section">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-professional">
+                @for (exp of formData.experience; track $index) {
+                <div class="experience-entry">
+                    <div class="experience-header">
+                        <h3 class="position-title">{{ exp.jobTitle }}</h3>
+                        <span class="experience-period">{{ getDurationText(exp.fromYear, exp.toYear, exp.isPresent)
+                            }}</span>
+                    </div>
+                    <p class="company-name">{{ exp.company }}</p>
+                    <p class="position-description">{{ exp.description }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Educational Background -->
+        @if (formData?.education?.length) {
+        <section class="professional-section">
+            <h2 class="section-title">Educational Background</h2>
+            <div class="education-professional">
+                @for (edu of formData.education; track $index) {
+                <div class="education-entry">
+                    <div class="education-header">
+                        <h3 class="degree-title">{{ edu.degree }}</h3>
+                        <span class="education-period">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent)
+                            }}</span>
+                    </div>
+                    <p class="institution-name">{{ edu.institute }}</p>
+                    @if (edu.location) {
+                    <p class="institution-location">{{ edu.location }}</p>
+                    }
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Professional Certifications -->
+        @if (formData?.certifications?.length) {
+        <section class="professional-section">
+            <h2 class="section-title">Professional Certifications</h2>
+            <div class="certifications-professional">
+                @for (cert of formData.certifications; track $index) {
+                <div class="certification-entry">
+                    <h4 class="certification-title">{{ cert.name }}</h4>
+                    <p class="certification-details">{{ cert.issuer }}, {{ cert.year }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+    </main>
+</div>

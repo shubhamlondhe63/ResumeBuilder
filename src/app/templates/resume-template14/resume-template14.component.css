@@ -1,0 +1,227 @@
+/* Classic Template - Traditional Design */
+.classic-resume {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  font-family: 'Times New Roman', serif;
+  color: #000;
+  line-height: 1.5;
+  padding: 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Classic Header */
+.classic-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #000;
+}
+
+.classic-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.classic-title {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0 0 15px 0;
+  font-style: italic;
+}
+
+.classic-contact {
+  font-size: 1rem;
+  color: #333;
+}
+
+.separator {
+  margin: 0 15px;
+  color: #666;
+}
+
+/* Main Content */
+.classic-main {
+  space-y: 30px;
+}
+
+.classic-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+/* Professional Summary */
+.summary-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Key Skills */
+.skills-classic {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.skill-item {
+  font-size: 0.95rem;
+  color: #333;
+  background: #f5f5f5;
+  padding: 5px 12px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Work Experience */
+.experience-classic {
+  space-y: 25px;
+}
+
+.experience-item {
+  margin-bottom: 25px;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.job-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+.job-period {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+.company-name {
+  font-size: 1rem;
+  color: #333;
+  font-weight: bold;
+  margin: 5px 0 8px 0;
+}
+
+.job-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Education */
+.education-classic {
+  space-y: 20px;
+}
+
+.education-item {
+  margin-bottom: 20px;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.degree-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+.education-period {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+.institute-name {
+  font-size: 1rem;
+  color: #333;
+  font-weight: bold;
+  margin: 5px 0 5px 0;
+}
+
+.institute-location {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Certifications */
+.certifications-classic {
+  space-y: 15px;
+}
+
+.certification-item {
+  margin-bottom: 15px;
+}
+
+.certification-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 5px 0;
+}
+
+.certification-info {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .classic-resume {
+    padding: 30px 20px;
+  }
+  
+  .classic-name {
+    font-size: 2rem;
+  }
+  
+  .experience-header,
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .skills-classic {
+    gap: 10px;
+  }
+  
+  .classic-main {
+    space-y: 25px;
+  }
+  
+  .classic-section {
+    margin-bottom: 25px;
+  }
+}

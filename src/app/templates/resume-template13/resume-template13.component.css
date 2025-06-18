@@ -1,0 +1,318 @@
+/* Professional Template - Business-Focused Design */
+.professional-resume {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  font-family: 'Calibri', 'Arial', sans-serif;
+  color: #2c3e50;
+  line-height: 1.6;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Professional Header */
+.professional-header {
+  background: #2c3e50;
+  color: white;
+  padding: 50px 40px;
+  text-align: center;
+}
+
+.header-content {
+  margin-bottom: 30px;
+}
+
+.professional-name {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.professional-title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0 0 25px 0;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+.professional-contact {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+}
+
+.contact-icon {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.header-divider {
+  height: 3px;
+  background: #3498db;
+  width: 100px;
+  margin: 0 auto;
+}
+
+/* Main Content */
+.professional-main {
+  padding: 40px;
+}
+
+.professional-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+}
+
+/* Executive Summary */
+.summary-professional {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 6px;
+  border-left: 4px solid #3498db;
+}
+
+.summary-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #34495e;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Core Competencies */
+.competencies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.competency-item {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.competency-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+  border-color: #3498db;
+}
+
+.competency-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Professional Experience */
+.experience-professional {
+  space-y: 30px;
+}
+
+.experience-entry {
+  margin-bottom: 30px;
+  padding: 25px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+.experience-entry:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.15);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.position-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.experience-period {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  background: #ecf0f1;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  color: #3498db;
+  font-weight: 600;
+  margin: 10px 0 12px 0;
+}
+
+.position-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #5a6c7d;
+  margin: 0;
+}
+
+/* Educational Background */
+.education-professional {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.education-entry {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+.education-entry:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.15);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.degree-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.education-period {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  background: #ecf0f1;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.institution-name {
+  font-size: 1rem;
+  color: #3498db;
+  font-weight: 600;
+  margin: 10px 0 8px 0;
+}
+
+.institution-location {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+/* Professional Certifications */
+.certifications-professional {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.certification-entry {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.certification-entry:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.15);
+  border-color: #3498db;
+}
+
+.certification-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+}
+
+.certification-details {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .professional-header {
+    padding: 40px 30px;
+  }
+  
+  .professional-name {
+    font-size: 2.5rem;
+  }
+  
+  .professional-main {
+    padding: 30px 25px;
+  }
+  
+  .experience-header,
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .education-professional {
+    grid-template-columns: 1fr;
+  }
+  
+  .certifications-professional {
+    grid-template-columns: 1fr;
+  }
+  
+  .competencies-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .professional-contact {
+    gap: 25px;
+  }
+}

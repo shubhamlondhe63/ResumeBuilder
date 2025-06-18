@@ -208,7 +208,44 @@
 
       <div class="preview-content">
         <div class="preview-template">
-          <!-- Template Preview Placeholder -->
+          @if (selectedTemplate === 'template1') {
+          <app-resume-template1 [formData]="formData"></app-resume-template1>
+          } @else if (selectedTemplate === 'template2') {
+          <app-resume-template2 [formData]="formData"></app-resume-template2>
+          } @else if (selectedTemplate === 'template3') {
+          <app-resume-template3 [formData]="formData"></app-resume-template3>
+          } @else if (selectedTemplate === 'template4') {
+          <app-resume-template4 [formData]="formData"></app-resume-template4>
+          } @else if (selectedTemplate === 'template5') {
+          <app-resume-template5 [formData]="formData"></app-resume-template5>
+          } @else if (selectedTemplate === 'template6') {
+          <app-resume-template6 [formData]="formData"></app-resume-template6>
+          } @else if (selectedTemplate === 'template7') {
+          <app-resume-template7 [formData]="formData"></app-resume-template7>
+          } @else if (selectedTemplate === 'template8') {
+          <app-resume-template8 [formData]="formData"></app-resume-template8>
+          } @else if (selectedTemplate === 'template9') {
+          <app-resume-template9 [formData]="formData"></app-resume-template9>
+          } @else if (selectedTemplate === 'template10') {
+          <app-resume-template10 [formData]="formData"></app-resume-template10>
+          } @else if (selectedTemplate === 'template11') {
+          <app-resume-template11 [formData]="formData"></app-resume-template11>
+          } @else if (selectedTemplate === 'template12') {
+          <app-resume-template12 [formData]="formData"></app-resume-template12>
+          } @else if (selectedTemplate === 'template13') {
+          <app-resume-template13 [formData]="formData"></app-resume-template13>
+          } @else if (selectedTemplate === 'template14') {
+          <app-resume-template14 [formData]="formData"></app-resume-template14>
+          } @else if (selectedTemplate === 'template15') {
+          <app-resume-template15 [formData]="formData"></app-resume-template15>
+          } @else if (selectedTemplate === 'template16') {
+          <app-resume-template16 [formData]="formData"></app-resume-template16>
+          } @else if (selectedTemplate === 'template17') {
+          <app-resume-template17 [formData]="formData"></app-resume-template17>
+          } @else if (selectedTemplate === 'template18') {
+          <app-resume-template18 [formData]="formData"></app-resume-template18>
+          } else {
+          <!-- Fallback for other templates -->
           <div class="template-placeholder">
             <span class="placeholder-icon">📄</span>
             <h3>{{ getTemplate(selectedTemplate)?.name }} Template</h3>
@@ -223,6 +260,7 @@
               <span>Template preview will be generated with your data</span>
             </div>
           </div>
+          }
         </div>
 
         <div class="preview-sidebar">

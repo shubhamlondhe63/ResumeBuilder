@@ -17,8 +17,8 @@
         @for (exp of formData.experience; track $index) {
         <div class="mb-4">
             <p class="font-semibold text-black">{{ exp.jobTitle }}</p>
-            <p class="text-sm font-medium text-gray-800">{{ exp.company }} | <span class="italic">{{ exp.duration
-                    }}</span></p>
+            <p class="text-sm font-medium text-gray-800">{{ exp.company }} | <span class="italic">{{
+                    getDurationText(exp.fromYear, exp.toYear, exp.isPresent) }}</span></p>
             <p class="text-sm mt-1 text-gray-800">{{ exp.description }}</p>
         </div>
         }
@@ -26,14 +26,31 @@
     }
 
     <!-- Skills -->
-    @if (formData?.skills?.length) {
+    @if (getSkills().length) {
     <section class="mb-6">
         <h2 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-3 uppercase tracking-wide">Skills</h2>
         <ul class="list-disc list-inside text-sm text-gray-800 columns-2 gap-x-10">
-            @for (skill of formData.skills; track $index) {
+            @for (skill of getSkills(); track $index) {
             <li>{{ skill }}</li>
             }
         </ul>
+    </section>
+    }
+
+    <!-- Education -->
+    @if (formData?.education?.length) {
+    <section class="mb-6">
+        <h2 class="text-lg font-semibold border-b border-gray-300 pb-1 mb-3 uppercase tracking-wide">Education</h2>
+        @for (edu of formData.education; track $index) {
+        <div class="mb-4">
+            <p class="font-semibold text-black">{{ edu.degree }}</p>
+            <p class="text-sm font-medium text-gray-800">{{ edu.institute }} | <span class="italic">{{
+                    getDurationText(edu.fromYear, edu.toYear, edu.isPresent) }}</span></p>
+            @if (edu.location) {
+            <p class="text-sm text-gray-600">{{ edu.location }}</p>
+            }
+        </div>
+        }
     </section>
     }
 

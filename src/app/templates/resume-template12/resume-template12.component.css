@@ -1,0 +1,344 @@
+/* Modern Template - Contemporary Design */
+.modern-resume {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Modern Header */
+.modern-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.modern-name {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.modern-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+.modern-contact {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-modern {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.contact-modern:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.contact-icon {
+  font-size: 1.1rem;
+}
+
+.header-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+/* Main Content */
+.modern-main {
+  padding: 50px;
+}
+
+.modern-section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0 0 25px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Summary Modern */
+.summary-modern {
+  background: #f8fafc;
+  padding: 30px;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+}
+
+.summary-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Skills Modern */
+.skills-modern {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-modern {
+  background: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-modern:hover {
+  border-color: #667eea;
+  background: #f7fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.skill-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+/* Experience Modern */
+.experience-modern {
+  space-y: 35px;
+}
+
+.experience-item {
+  margin-bottom: 35px;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.job-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.job-period {
+  font-size: 0.9rem;
+  color: #718096;
+  background: #f7fafc;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: 500;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  color: #667eea;
+  font-weight: 600;
+  margin: 10px 0 15px 0;
+}
+
+.job-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4a5568;
+  margin: 0;
+}
+
+/* Education Modern */
+.education-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.education-item {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.degree-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.education-period {
+  font-size: 0.9rem;
+  color: #718096;
+  background: #f7fafc;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: 500;
+}
+
+.institute-name {
+  font-size: 1rem;
+  color: #667eea;
+  font-weight: 600;
+  margin: 10px 0 8px 0;
+}
+
+.institute-location {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0;
+}
+
+/* Certifications Modern */
+.certifications-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.certification-item {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.certification-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+}
+
+.certification-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.certification-info {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-header {
+    padding: 40px 30px;
+  }
+  
+  .modern-name {
+    font-size: 2.5rem;
+  }
+  
+  .modern-main {
+    padding: 40px 30px;
+  }
+  
+  .experience-header,
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .education-modern {
+    grid-template-columns: 1fr;
+  }
+  
+  .certifications-modern {
+    grid-template-columns: 1fr;
+  }
+  
+  .modern-contact {
+    gap: 20px;
+  }
+  
+  .skills-modern {
+    gap: 10px;
+  }
+}

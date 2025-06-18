@@ -12,26 +12,11 @@
     </header>
 
     <!-- Skills -->
-    @if (formData?.skills?.length) {
+    @if (getSkills().length) {
     <section>
         <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Skills</h2>
         <div class="flex flex-wrap gap-2">
-            @for (skill of formData.skills; track $index) {
-            <span
-                class="bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-medium shadow-sm whitespace-nowrap transition hover:bg-indigo-200">
-                {{ skill }}
-            </span>
-            }
-        </div>
-    </section>
-    }
-
-    <!-- Skills -->
-    @if (formData?.skills?.length) {
-    <section>
-        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Skills</h2>
-        <div class="flex flex-wrap gap-2">
-            @for (skill of formData.skills; track $index) {
+            @for (skill of getSkills(); track $index) {
             <span
                 class="bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-medium shadow-sm whitespace-nowrap transition hover:bg-indigo-200">
                 {{ skill }}
@@ -50,7 +35,8 @@
             <div class="p-4 border-l-4 border-indigo-400 bg-gray-50 rounded-md shadow-sm">
                 <div class="flex justify-between items-center">
                     <p class="text-lg font-semibold text-gray-800">{{ exp.jobTitle }}</p>
-                    <span class="text-sm text-gray-500 italic">{{ exp.duration }}</span>
+                    <span class="text-sm text-gray-500 italic">{{ getDurationText(exp.fromYear, exp.toYear,
+                        exp.isPresent) }}</span>
                 </div>
                 <p class="text-indigo-700 font-medium">{{ exp.company }}</p>
                 <p class="text-gray-700 mt-2">{{ exp.description }}</p>
@@ -89,7 +75,8 @@
             <div class="bg-gray-50 p-4 rounded-md border shadow-sm">
                 <p class="text-lg font-semibold text-gray-800">{{ edu.degree }}</p>
                 <p class="text-indigo-700">{{ edu.institute }}</p>
-                <p class="text-sm text-gray-500">{{ edu.duration }} - {{ edu.location }}</p>
+                <p class="text-sm text-gray-500">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent) }} - {{
+                    edu.location }}</p>
             </div>
             }
         </div>

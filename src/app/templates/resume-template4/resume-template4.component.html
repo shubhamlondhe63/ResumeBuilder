@@ -1,0 +1,94 @@
+<!-- Executive Template - Premium Professional Design -->
+<div class="executive-resume">
+    <!-- Header Section -->
+    <header class="executive-header">
+        <div class="header-content">
+            <h1 class="executive-name">{{ formData?.fullName }}</h1>
+            <p class="executive-title">{{ formData?.role }}</p>
+            <div class="executive-contact">
+                <span class="contact-item">{{ formData?.email }}</span>
+                <span class="contact-separator">•</span>
+                <span class="contact-item">{{ formData?.phone }}</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="executive-main">
+        <!-- Professional Summary -->
+        @if (formData?.summary) {
+        <section class="executive-section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary-text">{{ formData.summary }}</p>
+        </section>
+        }
+
+        <!-- Core Competencies -->
+        @if (getSkills().length) {
+        <section class="executive-section">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="skills-grid">
+                @for (skill of getSkills(); track $index) {
+                <div class="skill-item">{{ skill }}</div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Professional Experience -->
+        @if (formData?.experience?.length) {
+        <section class="executive-section">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-list">
+                @for (exp of formData.experience; track $index) {
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="job-title">{{ exp.jobTitle }}</h3>
+                        <span class="job-duration">{{ getDurationText(exp.fromYear, exp.toYear, exp.isPresent) }}</span>
+                    </div>
+                    <p class="company-name">{{ exp.company }}</p>
+                    <p class="job-description">{{ exp.description }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Education -->
+        @if (formData?.education?.length) {
+        <section class="executive-section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-list">
+                @for (edu of formData.education; track $index) {
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="degree-name">{{ edu.degree }}</h3>
+                        <span class="education-duration">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent)
+                            }}</span>
+                    </div>
+                    <p class="institute-name">{{ edu.institute }}</p>
+                    @if (edu.location) {
+                    <p class="institute-location">{{ edu.location }}</p>
+                    }
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Certifications -->
+        @if (formData?.certifications?.length) {
+        <section class="executive-section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-list">
+                @for (cert of formData.certifications; track $index) {
+                <div class="certification-item">
+                    <span class="cert-name">{{ cert.name }}</span>
+                    <span class="cert-details">{{ cert.issuer }}, {{ cert.year }}</span>
+                </div>
+                }
+            </div>
+        </section>
+        }
+    </main>
+</div>
