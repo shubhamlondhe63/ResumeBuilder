@@ -1,1 +1,111 @@
-<p>resume-template17 works!</p>
+<!-- Dynamic Template - Energetic Design -->
+<div class="dynamic-resume">
+    <!-- Dynamic Header -->
+    <header class="dynamic-header">
+        <div class="dynamic-background">
+            <div class="dynamic-elements">
+                <div class="element element-1"></div>
+                <div class="element element-2"></div>
+                <div class="element element-3"></div>
+                <div class="element element-4"></div>
+            </div>
+        </div>
+        <div class="header-content">
+            <h1 class="dynamic-name">{{ formData?.fullName }}</h1>
+            <p class="dynamic-title">{{ formData?.role }}</p>
+            <div class="dynamic-contact">
+                <div class="contact-dynamic">
+                    <span class="contact-icon">🚀</span>
+                    <span>{{ formData?.email }}</span>
+                </div>
+                <div class="contact-dynamic">
+                    <span class="contact-icon">⚡</span>
+                    <span>{{ formData?.phone }}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dynamic-main">
+        <!-- Dynamic Summary -->
+        @if (formData?.summary) {
+        <section class="dynamic-section">
+            <h2 class="section-title">Dynamic Profile</h2>
+            <div class="summary-dynamic">
+                <p class="summary-text">{{ formData.summary }}</p>
+            </div>
+        </section>
+        }
+
+        <!-- Dynamic Skills -->
+        @if (getSkills().length) {
+        <section class="dynamic-section">
+            <h2 class="section-title">Dynamic Skills</h2>
+            <div class="skills-dynamic">
+                @for (skill of getSkills(); track $index) {
+                <div class="skill-dynamic">
+                    <span class="skill-name">{{ skill }}</span>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Dynamic Experience -->
+        @if (formData?.experience?.length) {
+        <section class="dynamic-section">
+            <h2 class="section-title">Dynamic Journey</h2>
+            <div class="experience-dynamic">
+                @for (exp of formData.experience; track $index) {
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="job-title">{{ exp.jobTitle }}</h3>
+                        <span class="job-period">{{ getDurationText(exp.fromYear, exp.toYear, exp.isPresent) }}</span>
+                    </div>
+                    <p class="company-name">{{ exp.company }}</p>
+                    <p class="job-description">{{ exp.description }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Dynamic Education -->
+        @if (formData?.education?.length) {
+        <section class="dynamic-section">
+            <h2 class="section-title">Dynamic Foundation</h2>
+            <div class="education-dynamic">
+                @for (edu of formData.education; track $index) {
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="degree-name">{{ edu.degree }}</h3>
+                        <span class="education-period">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent)
+                            }}</span>
+                    </div>
+                    <p class="institute-name">{{ edu.institute }}</p>
+                    @if (edu.location) {
+                    <p class="institute-location">{{ edu.location }}</p>
+                    }
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Dynamic Achievements -->
+        @if (formData?.certifications?.length) {
+        <section class="dynamic-section">
+            <h2 class="section-title">Dynamic Achievements</h2>
+            <div class="achievements-dynamic">
+                @for (cert of formData.certifications; track $index) {
+                <div class="achievement-item">
+                    <h4 class="achievement-name">{{ cert.name }}</h4>
+                    <p class="achievement-info">{{ cert.issuer }}, {{ cert.year }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+    </main>
+</div>

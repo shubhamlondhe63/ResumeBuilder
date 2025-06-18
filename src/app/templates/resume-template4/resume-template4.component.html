@@ -1,94 +1,60 @@
 <!-- Executive Template - Premium Professional Design -->
-<div class="executive-resume">
-    <!-- Header Section -->
-    <header class="executive-header">
-        <div class="header-content">
-            <h1 class="executive-name">{{ formData?.fullName }}</h1>
-            <p class="executive-title">{{ formData?.role }}</p>
-            <div class="executive-contact">
-                <span class="contact-item">{{ formData?.email }}</span>
-                <span class="contact-separator">•</span>
-                <span class="contact-item">{{ formData?.phone }}</span>
-            </div>
+<div class="resume4-ats-container">
+    <!-- Header -->
+    <div class="resume4-ats-header">
+        <div class="resume4-ats-name">{{ formData.name || 'SHUBHAM LONDHE' }}</div>
+        <div class="resume4-ats-title">{{ formData.title || 'Software Engineer' }}</div>
+        <div class="resume4-ats-contact">
+            {{ formData.email || 'shubhamlondhe63.career@gmail.com' }} | {{ formData.phone || '8587581201' }} | {{
+            formData.location || 'Vimanagar, Pune, India' }}
         </div>
-    </header>
+    </div>
 
-    <!-- Main Content -->
-    <main class="executive-main">
-        <!-- Professional Summary -->
-        @if (formData?.summary) {
-        <section class="executive-section">
-            <h2 class="section-title">Professional Summary</h2>
-            <p class="summary-text">{{ formData.summary }}</p>
-        </section>
-        }
+    <!-- Summary -->
+    <div class="resume4-ats-summary">
+        {{ formData.summary || 'Results-driven Angular Developer with 3+ years of experience in building scalable,
+        responsive web applications. Expertise in Angular, TypeScript, JavaScript, HTML5, CSS3, Bootstrap, Tailwind,
+        PrimeNG, AgGrid and back-end integration with Node.js, ExpressJS, NestJS. Passionate about clean architecture,
+        reusability, and performance optimization, seeking a full-time opportunity to create impactful, user-centric
+        applications.' }}
+    </div>
 
-        <!-- Core Competencies -->
-        @if (getSkills().length) {
-        <section class="executive-section">
-            <h2 class="section-title">Core Competencies</h2>
-            <div class="skills-grid">
-                @for (skill of getSkills(); track $index) {
-                <div class="skill-item">{{ skill }}</div>
-                }
+    <!-- Professional Experience -->
+    <div class="resume4-ats-section">
+        <div class="resume4-ats-section-title">Professional Experience</div>
+        <div class="resume4-ats-section-divider"></div>
+        <ng-container *ngFor="let exp of formData.experience">
+            <div class="resume4-ats-exp-header">
+                <span class="resume4-ats-exp-company">{{ exp.company }}</span>
+                <span class="resume4-ats-exp-role">{{ exp.role ? ' - ' + exp.role : '' }}</span>
+                <span class="resume4-ats-exp-dates">{{ exp.dates }}</span>
             </div>
-        </section>
-        }
+            <ul class="resume4-ats-exp-bullets">
+                <li *ngFor="let bullet of exp.bullets">{{ bullet }}</li>
+            </ul>
+        </ng-container>
+    </div>
 
-        <!-- Professional Experience -->
-        @if (formData?.experience?.length) {
-        <section class="executive-section">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="experience-list">
-                @for (exp of formData.experience; track $index) {
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h3 class="job-title">{{ exp.jobTitle }}</h3>
-                        <span class="job-duration">{{ getDurationText(exp.fromYear, exp.toYear, exp.isPresent) }}</span>
-                    </div>
-                    <p class="company-name">{{ exp.company }}</p>
-                    <p class="job-description">{{ exp.description }}</p>
-                </div>
-                }
-            </div>
-        </section>
-        }
+    <!-- Education -->
+    <div class="resume4-ats-section">
+        <div class="resume4-ats-section-title">Education</div>
+        <div class="resume4-ats-section-divider"></div>
+        <ng-container *ngFor="let edu of formData.education">
+            <div class="resume4-ats-edu-degree">{{ edu.degree }}</div>
+            <div class="resume4-ats-edu-school">{{ edu.school }}</div>
+        </ng-container>
+    </div>
 
-        <!-- Education -->
-        @if (formData?.education?.length) {
-        <section class="executive-section">
-            <h2 class="section-title">Education</h2>
-            <div class="education-list">
-                @for (edu of formData.education; track $index) {
-                <div class="education-item">
-                    <div class="education-header">
-                        <h3 class="degree-name">{{ edu.degree }}</h3>
-                        <span class="education-duration">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent)
-                            }}</span>
-                    </div>
-                    <p class="institute-name">{{ edu.institute }}</p>
-                    @if (edu.location) {
-                    <p class="institute-location">{{ edu.location }}</p>
-                    }
-                </div>
-                }
-            </div>
-        </section>
-        }
+    <!-- Areas of Expertise -->
+    <div class="resume4-ats-section">
+        <div class="resume4-ats-section-title">Areas of Expertise</div>
+        <div class="resume4-ats-section-divider"></div>
+        <ul class="resume4-ats-skills">
+            <li *ngFor="let skill of formData.skills">{{ skill }}</li>
+        </ul>
+    </div>
 
-        <!-- Certifications -->
-        @if (formData?.certifications?.length) {
-        <section class="executive-section">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-list">
-                @for (cert of formData.certifications; track $index) {
-                <div class="certification-item">
-                    <span class="cert-name">{{ cert.name }}</span>
-                    <span class="cert-details">{{ cert.issuer }}, {{ cert.year }}</span>
-                </div>
-                }
-            </div>
-        </section>
-        }
-    </main>
+    <div class="resume4-ats-footer">
+        <span>Page 1 | 1</span>
+    </div>
 </div>

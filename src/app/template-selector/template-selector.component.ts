@@ -461,8 +461,25 @@ export class TemplateSelectorComponent implements OnInit {
   }
 
   downloadTemplate(templateId: string) {
-    // Logic to download the template
+    // Implementation for downloading template
     console.log('Downloading template:', templateId);
-    // Implement download functionality
+    // Add download logic here
+  }
+
+  // TrackBy methods for ngFor optimization
+  trackByCategory(index: number, category: any): string {
+    return category.id;
+  }
+
+  trackByTemplate(index: number, template: Template): string {
+    return template.id;
+  }
+
+  trackByFeature(index: number, feature: string): string {
+    return feature;
+  }
+
+  trackByPage(index: number, page: number): number {
+    return page;
   }
 }

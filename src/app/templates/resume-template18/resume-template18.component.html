@@ -1,1 +1,114 @@
-<p>resume-template18 works!</p>
+<!-- Premium Template - Luxury Design -->
+<div class="premium-resume">
+    <!-- Premium Header -->
+    <header class="premium-header">
+        <div class="premium-background">
+            <div class="premium-pattern">
+                <div class="pattern-line line-1"></div>
+                <div class="pattern-line line-2"></div>
+                <div class="pattern-line line-3"></div>
+            </div>
+            <div class="premium-accent">
+                <div class="accent-circle circle-1"></div>
+                <div class="accent-circle circle-2"></div>
+            </div>
+        </div>
+        <div class="header-content">
+            <h1 class="premium-name">{{ formData?.fullName }}</h1>
+            <p class="premium-title">{{ formData?.role }}</p>
+            <div class="premium-contact">
+                <div class="contact-premium">
+                    <span class="contact-icon">💎</span>
+                    <span>{{ formData?.email }}</span>
+                </div>
+                <div class="contact-premium">
+                    <span class="contact-icon">✨</span>
+                    <span>{{ formData?.phone }}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="premium-main">
+        <!-- Premium Summary -->
+        @if (formData?.summary) {
+        <section class="premium-section">
+            <h2 class="section-title">Executive Profile</h2>
+            <div class="summary-premium">
+                <p class="summary-text">{{ formData.summary }}</p>
+            </div>
+        </section>
+        }
+
+        <!-- Premium Skills -->
+        @if (getSkills().length) {
+        <section class="premium-section">
+            <h2 class="section-title">Core Expertise</h2>
+            <div class="skills-premium">
+                @for (skill of getSkills(); track $index) {
+                <div class="skill-premium">
+                    <span class="skill-name">{{ skill }}</span>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Premium Experience -->
+        @if (formData?.experience?.length) {
+        <section class="premium-section">
+            <h2 class="section-title">Professional Excellence</h2>
+            <div class="experience-premium">
+                @for (exp of formData.experience; track $index) {
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="job-title">{{ exp.jobTitle }}</h3>
+                        <span class="job-period">{{ getDurationText(exp.fromYear, exp.toYear, exp.isPresent) }}</span>
+                    </div>
+                    <p class="company-name">{{ exp.company }}</p>
+                    <p class="job-description">{{ exp.description }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Premium Education -->
+        @if (formData?.education?.length) {
+        <section class="premium-section">
+            <h2 class="section-title">Academic Excellence</h2>
+            <div class="education-premium">
+                @for (edu of formData.education; track $index) {
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="degree-name">{{ edu.degree }}</h3>
+                        <span class="education-period">{{ getDurationText(edu.fromYear, edu.toYear, edu.isPresent)
+                            }}</span>
+                    </div>
+                    <p class="institute-name">{{ edu.institute }}</p>
+                    @if (edu.location) {
+                    <p class="institute-location">{{ edu.location }}</p>
+                    }
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Premium Achievements -->
+        @if (formData?.certifications?.length) {
+        <section class="premium-section">
+            <h2 class="section-title">Distinguished Achievements</h2>
+            <div class="achievements-premium">
+                @for (cert of formData.certifications; track $index) {
+                <div class="achievement-item">
+                    <h4 class="achievement-name">{{ cert.name }}</h4>
+                    <p class="achievement-info">{{ cert.issuer }}, {{ cert.year }}</p>
+                </div>
+                }
+            </div>
+        </section>
+        }
+    </main>
+</div>

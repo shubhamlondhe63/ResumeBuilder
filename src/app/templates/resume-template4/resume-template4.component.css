@@ -240,3 +240,263 @@
     gap: 5px;
   }
 }
+
+.resume4-container {
+  background: #fff;
+  border-radius: 10px;
+  padding: 32px 40px 24px 40px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  max-width: 800px;
+  margin: 32px auto;
+  border: 1px solid #e3eafc;
+}
+.resume4-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.resume4-header-left {
+  min-width: 220px;
+}
+.resume4-name {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #2a4d9b;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+}
+.resume4-title {
+  font-size: 1.08rem;
+  color: #2a4d9b;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.resume4-header-right {
+  text-align: right;
+  font-size: 0.98rem;
+  color: #2a4d9b;
+  line-height: 1.5;
+  min-width: 200px;
+}
+.resume4-contact {
+  color: #2a4d9b;
+}
+.resume4-summary {
+  margin-top: 16px;
+  font-size: 1.01rem;
+  color: #222;
+}
+.resume4-section {
+  margin-top: 32px;
+}
+.resume4-section-title {
+  color: #2a4d9b;
+  font-size: 1.13rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.resume4-section-divider {
+  height: 1.5px;
+  background: #e3eafc;
+  margin-bottom: 12px;
+  border-radius: 1px;
+}
+.resume4-exp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.01rem;
+  margin-bottom: 2px;
+  flex-wrap: wrap;
+}
+.resume4-exp-company {
+  color: #2a4d9b;
+  font-weight: 500;
+}
+.resume4-exp-role {
+  color: #2a4d9b;
+  font-weight: 500;
+  margin-left: 4px;
+}
+.resume4-exp-dates {
+  color: #2a4d9b;
+  font-size: 0.97rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.resume4-exp-bullets {
+  margin: 0 0 12px 18px;
+  padding: 0;
+  color: #222;
+  font-size: 0.98rem;
+}
+.resume4-exp-bullets li {
+  margin-bottom: 2px;
+  list-style-type: disc;
+}
+.resume4-edu-degree {
+  font-weight: 500;
+  color: #2a4d9b;
+  font-size: 1.03rem;
+}
+.resume4-edu-school {
+  color: #2a4d9b;
+  font-size: 1.01rem;
+  margin-bottom: 6px;
+}
+.resume4-expertise-list {
+  display: flex;
+  gap: 32px;
+  margin-top: 8px;
+}
+.resume4-expertise-col {
+  flex: 1 1 0;
+  list-style: disc inside;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  font-size: 0.98rem;
+}
+.resume4-footer {
+  text-align: right;
+  color: #2a4d9b;
+  font-size: 0.95rem;
+  margin-top: 32px;
+}
+@media (max-width: 700px) {
+  .resume4-container {
+    padding: 18px 6vw 16px 6vw;
+  }
+  .resume4-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .resume4-header-right {
+    text-align: left;
+  }
+  .resume4-expertise-list {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.resume4-ats-container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 32px 32px 20px 32px;
+  font-family: Arial, 'Segoe UI', sans-serif;
+  color: #222;
+  max-width: 700px;
+  margin: 32px auto;
+  border: 1px solid #e3eafc;
+}
+.resume4-ats-header {
+  margin-bottom: 12px;
+}
+.resume4-ats-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2a4d9b;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+}
+.resume4-ats-title {
+  font-size: 1.05rem;
+  color: #2a4d9b;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.resume4-ats-contact {
+  font-size: 0.98rem;
+  color: #222;
+  margin-bottom: 8px;
+}
+.resume4-ats-summary {
+  margin-bottom: 18px;
+  font-size: 1.01rem;
+  color: #222;
+}
+.resume4-ats-section {
+  margin-top: 22px;
+}
+.resume4-ats-section-title {
+  color: #2a4d9b;
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  letter-spacing: 0.2px;
+}
+.resume4-ats-section-divider {
+  height: 1.5px;
+  background: #e3eafc;
+  margin-bottom: 10px;
+  border-radius: 1px;
+  border: none;
+}
+.resume4-ats-exp-header {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2a4d9b;
+  margin-bottom: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.resume4-ats-exp-company {
+  color: #2a4d9b;
+  font-weight: 600;
+}
+.resume4-ats-exp-role {
+  color: #2a4d9b;
+  font-weight: 500;
+}
+.resume4-ats-exp-dates {
+  color: #222;
+  font-weight: 400;
+  margin-left: auto;
+  font-size: 0.97rem;
+}
+.resume4-ats-exp-bullets {
+  margin: 0 0 10px 18px;
+  padding: 0;
+  color: #222;
+  font-size: 0.98rem;
+}
+.resume4-ats-exp-bullets li {
+  margin-bottom: 2px;
+  list-style-type: disc;
+}
+.resume4-ats-edu-degree {
+  font-weight: 600;
+  color: #2a4d9b;
+  font-size: 1.01rem;
+}
+.resume4-ats-edu-school {
+  color: #2a4d9b;
+  font-size: 0.99rem;
+  margin-bottom: 6px;
+}
+.resume4-ats-skills {
+  margin: 0 0 0 18px;
+  padding: 0;
+  color: #222;
+  font-size: 0.98rem;
+}
+.resume4-ats-skills li {
+  margin-bottom: 2px;
+  list-style-type: disc;
+}
+.resume4-ats-footer {
+  text-align: right;
+  color: #2a4d9b;
+  font-size: 0.93rem;
+  margin-top: 28px;
+}
+@media (max-width: 600px) {
+  .resume4-ats-container {
+    padding: 12px 2vw 12px 2vw;
+  }
+}

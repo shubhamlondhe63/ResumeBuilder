@@ -36,26 +36,26 @@
           <span class="search-icon">🔍</span>
           <input type="text" [(ngModel)]="searchTerm" (input)="onSearchChange()"
             placeholder="Search templates by name, style, or features..." class="search-input" />
-          @if (searchTerm) {
-          <button class="clear-search" (click)="searchTerm = ''; onSearchChange()">
-            <span>✕</span>
-          </button>
-          }
+          <ng-container *ngIf="searchTerm">
+            <button class="clear-search" (click)="searchTerm = ''; onSearchChange()">
+              <span>✕</span>
+            </button>
+          </ng-container>
         </div>
       </div>
 
       <!-- Category Filter -->
       <div class="category-filter">
-        @for (category of categories; track category.id) {
-        <button class="category-btn" [class.active]="selectedCategory === category.id"
-          (click)="selectCategory(category.id)">
-          <span class="category-icon">{{ category.icon }}</span>
-          <span class="category-name">{{ category.name }}</span>
-          <span class="category-count">
-            {{ getCategoryCount(category.id) }}
-          </span>
-        </button>
-        }
+        <ng-container *ngFor="let category of categories; trackBy: trackByCategory">
+          <button class="category-btn" [class.active]="selectedCategory === category.id"
+            (click)="selectCategory(category.id)">
+            <span class="category-icon">{{ category.icon }}</span>
+            <span class="category-name">{{ category.name }}</span>
+            <span class="category-count">
+              {{ getCategoryCount(category.id) }}
+            </span>
+          </button>
+        </ng-container>
       </div>
     </div>
   </div>
@@ -66,250 +66,272 @@
       <span class="results-text">
         Showing {{ paginatedTemplates.length }} of {{ filteredTemplates.length }} templates
       </span>
-      @if (searchTerm || selectedCategory !== 'all') {
-      <button class="clear-filters" (click)="searchTerm = ''; selectedCategory = 'all'; onSearchChange()">
-        <span>🔄</span>
-        Clear Filters
-      </button>
-      }
+      <ng-container *ngIf="searchTerm || selectedCategory !== 'all'">
+        <button class="clear-filters" (click)="searchTerm = ''; selectedCategory = 'all'; onSearchChange()">
+          <span>🔄</span>
+          Clear Filters
+        </button>
+      </ng-container>
     </div>
   </div>
 
   <!-- Templates Grid -->
   <div class="templates-grid">
-    @for (template of paginatedTemplates; track template.id) {
-    <div class="template-card" [class.premium]="template.premium">
-      <!-- Premium Badge -->
-      @if (template.premium) {
-      <div class="premium-badge">
-        <span class="premium-icon">👑</span>
-        <span class="premium-text">Premium</span>
+    <ng-container *ngFor="let template of paginatedTemplates; trackBy: trackByTemplate">
+      <div class="template-card" [class.premium]="template.premium">
+        <!-- Premium Badge -->
+        <ng-container *ngIf="template.premium">
+          <div class="premium-badge">
+            <span class="premium-icon">👑</span>
+            <span class="premium-text">Premium</span>
+          </div>
+        </ng-container>
+
+        <!-- Popularity Badge -->
+        <div class="popularity-badge">
+          <span class="popularity-icon">⭐</span>
+          <span class="popularity-score">{{ template.popularity }}%</span>
+        </div>
+
+        <!-- Template Thumbnail -->
+        <div class="template-thumbnail">
+          <div class="thumbnail-placeholder">
+            <span class="placeholder-icon">📄</span>
+            <span class="placeholder-text">{{ template.name }}</span>
+          </div>
+          <div class="template-overlay">
+            <button class="preview-btn" (click)="selectTemplate(template.id)">
+              <span class="btn-icon">👁️</span>
+              <span class="btn-text">Preview</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Template Info -->
+        <div class="template-info">
+          <div class="template-header">
+            <h3 class="template-name">{{ template.name }}</h3>
+            <span class="template-category">{{ template.category | titlecase }}</span>
+          </div>
+
+          <p class="template-description">{{ template.description }}</p>
+
+          <!-- Features -->
+          <div class="template-features">
+            <ng-container *ngFor="let feature of template.features; trackBy: trackByFeature">
+              <span class="feature-tag">{{ feature }}</span>
+            </ng-container>
+          </div>
+
+          <!-- Actions -->
+          <div class="template-actions">
+            <button class="action-btn secondary" (click)="selectTemplate(template.id)">
+              <span class="btn-icon">👁️</span>
+              <span class="btn-text">Preview</span>
+            </button>
+            <button class="action-btn primary" (click)="useTemplate(template.id)">
+              <span class="btn-icon">✨</span>
+              <span class="btn-text">Use Template</span>
+            </button>
+          </div>
+        </div>
       </div>
-      }
-
-      <!-- Popularity Badge -->
-      <div class="popularity-badge">
-        <span class="popularity-icon">⭐</span>
-        <span class="popularity-score">{{ template.popularity }}%</span>
-      </div>
-
-      <!-- Template Thumbnail -->
-      <div class="template-thumbnail">
-        <div class="thumbnail-placeholder">
-          <span class="placeholder-icon">📄</span>
-          <span class="placeholder-text">{{ template.name }}</span>
-        </div>
-        <div class="template-overlay">
-          <button class="preview-btn" (click)="selectTemplate(template.id)">
-            <span class="btn-icon">👁️</span>
-            <span class="btn-text">Preview</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Template Info -->
-      <div class="template-info">
-        <div class="template-header">
-          <h3 class="template-name">{{ template.name }}</h3>
-          <span class="template-category">{{ template.category | titlecase }}</span>
-        </div>
-
-        <p class="template-description">{{ template.description }}</p>
-
-        <!-- Features -->
-        <div class="template-features">
-          @for (feature of template.features; track feature) {
-          <span class="feature-tag">{{ feature }}</span>
-          }
-        </div>
-
-        <!-- Actions -->
-        <div class="template-actions">
-          <button class="action-btn secondary" (click)="selectTemplate(template.id)">
-            <span class="btn-icon">👁️</span>
-            <span class="btn-text">Preview</span>
-          </button>
-          <button class="action-btn primary" (click)="useTemplate(template.id)">
-            <span class="btn-icon">✨</span>
-            <span class="btn-text">Use Template</span>
-          </button>
-        </div>
-      </div>
-    </div>
-    }
+    </ng-container>
 
     <!-- No Results -->
-    @if (filteredTemplates.length === 0) {
-    <div class="no-results">
-      <div class="no-results-content">
-        <span class="no-results-icon">🔍</span>
-        <h3 class="no-results-title">No templates found</h3>
-        <p class="no-results-text">Try adjusting your search terms or filters</p>
-        <button class="clear-filters-btn" (click)="searchTerm = ''; selectedCategory = 'all'; onSearchChange()">
-          <span>🔄</span>
-          Clear All Filters
-        </button>
+    <ng-container *ngIf="filteredTemplates.length === 0">
+      <div class="no-results">
+        <div class="no-results-content">
+          <span class="no-results-icon">🔍</span>
+          <h3 class="no-results-title">No templates found</h3>
+          <p class="no-results-text">Try adjusting your search terms or filters</p>
+          <button class="clear-filters-btn" (click)="searchTerm = ''; selectedCategory = 'all'; onSearchChange()">
+            <span>🔄</span>
+            Clear All Filters
+          </button>
+        </div>
       </div>
-    </div>
-    }
+    </ng-container>
   </div>
 
   <!-- Pagination -->
-  @if (totalPages > 1) {
-  <div class="pagination-section">
-    <div class="pagination-content">
-      <button class="pagination-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
-        <span>←</span>
-        <span>Previous</span>
-      </button>
-
-      <div class="pagination-numbers">
-        @if (currentPage > 3) {
-        <button class="page-btn" (click)="goToPage(1)">1</button>
-        @if (currentPage > 4) {
-        <span class="pagination-dots">...</span>
-        }
-        }
-
-        @for (page of pages; track page) {
-        <button class="page-btn" [class.active]="page === currentPage" (click)="goToPage(page)">
-          {{ page }}
+  <ng-container *ngIf="totalPages > 1">
+    <div class="pagination-section">
+      <div class="pagination-content">
+        <button class="pagination-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+          <span>←</span>
+          <span>Previous</span>
         </button>
-        }
 
-        @if (currentPage < totalPages - 2) { @if (currentPage < totalPages - 3) { <span class="pagination-dots">
-          ...</span>
-          }
-          <button class="page-btn" (click)="goToPage(totalPages)">{{ totalPages }}</button>
-          }
+        <div class="pagination-numbers">
+          <ng-container *ngIf="currentPage > 3">
+            <button class="page-btn" (click)="goToPage(1)">1</button>
+            <ng-container *ngIf="currentPage > 4">
+              <span class="pagination-dots">...</span>
+            </ng-container>
+          </ng-container>
+
+          <ng-container *ngFor="let page of pages; trackBy: trackByPage">
+            <button class="page-btn" [class.active]="page === currentPage" (click)="goToPage(page)">
+              {{ page }}
+            </button>
+          </ng-container>
+
+          <ng-container *ngIf="currentPage < totalPages - 2">
+            <ng-container *ngIf="currentPage < totalPages - 3">
+              <span class="pagination-dots">...</span>
+            </ng-container>
+            <button class="page-btn" (click)="goToPage(totalPages)">{{ totalPages }}</button>
+          </ng-container>
+        </div>
+
+        <button class="pagination-btn" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
+          <span>Next</span>
+          <span>→</span>
+        </button>
       </div>
-
-      <button class="pagination-btn" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
-        <span>Next</span>
-        <span>→</span>
-      </button>
     </div>
-  </div>
-  }
+  </ng-container>
 
   <!-- Template Preview Modal -->
-  @if (isPreviewMode && selectedTemplate) {
-  <div class="preview-modal-overlay" (click)="closePreview()">
-    <div class="preview-modal" (click)="$event.stopPropagation()">
-      <div class="preview-header">
-        <div class="preview-title">
-          <h2>{{ getTemplate(selectedTemplate)?.name }}</h2>
-          <span class="preview-category">{{ getTemplate(selectedTemplate)?.category | titlecase }}</span>
-        </div>
-        <button class="close-preview" (click)="closePreview()">
-          <span>✕</span>
-        </button>
-      </div>
-
-      <div class="preview-content">
-        <div class="preview-template">
-          @if (selectedTemplate === 'template1') {
-          <app-resume-template1 [formData]="formData"></app-resume-template1>
-          } @else if (selectedTemplate === 'template2') {
-          <app-resume-template2 [formData]="formData"></app-resume-template2>
-          } @else if (selectedTemplate === 'template3') {
-          <app-resume-template3 [formData]="formData"></app-resume-template3>
-          } @else if (selectedTemplate === 'template4') {
-          <app-resume-template4 [formData]="formData"></app-resume-template4>
-          } @else if (selectedTemplate === 'template5') {
-          <app-resume-template5 [formData]="formData"></app-resume-template5>
-          } @else if (selectedTemplate === 'template6') {
-          <app-resume-template6 [formData]="formData"></app-resume-template6>
-          } @else if (selectedTemplate === 'template7') {
-          <app-resume-template7 [formData]="formData"></app-resume-template7>
-          } @else if (selectedTemplate === 'template8') {
-          <app-resume-template8 [formData]="formData"></app-resume-template8>
-          } @else if (selectedTemplate === 'template9') {
-          <app-resume-template9 [formData]="formData"></app-resume-template9>
-          } @else if (selectedTemplate === 'template10') {
-          <app-resume-template10 [formData]="formData"></app-resume-template10>
-          } @else if (selectedTemplate === 'template11') {
-          <app-resume-template11 [formData]="formData"></app-resume-template11>
-          } @else if (selectedTemplate === 'template12') {
-          <app-resume-template12 [formData]="formData"></app-resume-template12>
-          } @else if (selectedTemplate === 'template13') {
-          <app-resume-template13 [formData]="formData"></app-resume-template13>
-          } @else if (selectedTemplate === 'template14') {
-          <app-resume-template14 [formData]="formData"></app-resume-template14>
-          } @else if (selectedTemplate === 'template15') {
-          <app-resume-template15 [formData]="formData"></app-resume-template15>
-          } @else if (selectedTemplate === 'template16') {
-          <app-resume-template16 [formData]="formData"></app-resume-template16>
-          } @else if (selectedTemplate === 'template17') {
-          <app-resume-template17 [formData]="formData"></app-resume-template17>
-          } @else if (selectedTemplate === 'template18') {
-          <app-resume-template18 [formData]="formData"></app-resume-template18>
-          } else {
-          <!-- Fallback for other templates -->
-          <div class="template-placeholder">
-            <span class="placeholder-icon">📄</span>
-            <h3>{{ getTemplate(selectedTemplate)?.name }} Template</h3>
-            <p>{{ getTemplate(selectedTemplate)?.description }}</p>
-            <div class="placeholder-features">
-              @for (feature of getTemplate(selectedTemplate)?.features || []; track feature) {
-              <span class="feature-tag">{{ feature }}</span>
-              }
-            </div>
-            <div class="preview-note">
-              <span class="note-icon">💡</span>
-              <span>Template preview will be generated with your data</span>
-            </div>
+  <ng-container *ngIf="isPreviewMode && selectedTemplate">
+    <div class="preview-modal-overlay" (click)="closePreview()">
+      <div class="preview-modal" (click)="$event.stopPropagation()">
+        <div class="preview-header">
+          <div class="preview-title">
+            <h2>{{ getTemplate(selectedTemplate)?.name }}</h2>
+            <span class="preview-category">{{ getTemplate(selectedTemplate)?.category | titlecase }}</span>
           </div>
-          }
+          <button class="close-preview" (click)="closePreview()">
+            <span>✕</span>
+          </button>
         </div>
 
-        <div class="preview-sidebar">
-          <div class="template-details">
-            <h3>Template Details</h3>
-            <p class="template-description">{{ getTemplate(selectedTemplate)?.description }}</p>
-
-            <div class="detail-section">
-              <h4>Features</h4>
-              <div class="features-list">
-                @for (feature of getTemplate(selectedTemplate)?.features || []; track feature) {
-                <div class="feature-item">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">{{ feature }}</span>
+        <div class="preview-content">
+          <div class="preview-template">
+            <ng-container *ngIf="selectedTemplate === 'template1'">
+              <app-resume-template1 [formData]="formData"></app-resume-template1>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template2'">
+              <app-resume-template2 [formData]="formData"></app-resume-template2>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template3'">
+              <app-resume-template3 [formData]="formData"></app-resume-template3>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template4'">
+              <app-resume-template4 [formData]="formData"></app-resume-template4>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template5'">
+              <app-resume-template5 [formData]="formData"></app-resume-template5>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template6'">
+              <app-resume-template6 [formData]="formData"></app-resume-template6>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template7'">
+              <app-resume-template7 [formData]="formData"></app-resume-template7>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template8'">
+              <app-resume-template8 [formData]="formData"></app-resume-template8>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template9'">
+              <app-resume-template9 [formData]="formData"></app-resume-template9>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template10'">
+              <app-resume-template10 [formData]="formData"></app-resume-template10>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template11'">
+              <app-resume-template11 [formData]="formData"></app-resume-template11>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template12'">
+              <app-resume-template12 [formData]="formData"></app-resume-template12>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template13'">
+              <app-resume-template13 [formData]="formData"></app-resume-template13>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template14'">
+              <app-resume-template14 [formData]="formData"></app-resume-template14>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template15'">
+              <app-resume-template15 [formData]="formData"></app-resume-template15>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template16'">
+              <app-resume-template16 [formData]="formData"></app-resume-template16>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template17'">
+              <app-resume-template17 [formData]="formData"></app-resume-template17>
+            </ng-container>
+            <ng-container *ngIf="selectedTemplate === 'template18'">
+              <app-resume-template18 [formData]="formData"></app-resume-template18>
+            </ng-container>
+            <ng-container
+              *ngIf="!['template1', 'template2', 'template3', 'template4', 'template5', 'template6', 'template7', 'template8', 'template9', 'template10', 'template11', 'template12', 'template13', 'template14', 'template15', 'template16', 'template17', 'template18'].includes(selectedTemplate)">
+              <!-- Fallback for other templates -->
+              <div class="template-placeholder">
+                <span class="placeholder-icon">📄</span>
+                <h3>{{ getTemplate(selectedTemplate)?.name }} Template</h3>
+                <p>{{ getTemplate(selectedTemplate)?.description }}</p>
+                <div class="placeholder-features">
+                  <ng-container
+                    *ngFor="let feature of getTemplate(selectedTemplate)?.features || []; trackBy: trackByFeature">
+                    <span class="feature-tag">{{ feature }}</span>
+                  </ng-container>
                 </div>
-                }
+                <div class="preview-note">
+                  <span class="note-icon">💡</span>
+                  <span>Template preview will be generated with your data</span>
+                </div>
               </div>
-            </div>
+            </ng-container>
+          </div>
 
-            <div class="detail-section">
-              <h4>Category</h4>
-              <span class="category-tag">{{ getTemplate(selectedTemplate)?.category | titlecase }}</span>
-            </div>
+          <div class="preview-sidebar">
+            <div class="template-details">
+              <h3>Template Details</h3>
+              <p class="template-description">{{ getTemplate(selectedTemplate)?.description }}</p>
 
-            <div class="detail-section">
-              <h4>Popularity</h4>
-              <div class="popularity-meter">
-                <div class="popularity-bar">
-                  <div class="popularity-fill" [style.width.%]="getTemplate(selectedTemplate)?.popularity || 0">
+              <div class="detail-section">
+                <h4>Features</h4>
+                <div class="features-list">
+                  <ng-container
+                    *ngFor="let feature of getTemplate(selectedTemplate)?.features || []; trackBy: trackByFeature">
+                    <div class="feature-item">
+                      <span class="feature-icon">✓</span>
+                      <span class="feature-text">{{ feature }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="detail-section">
+                <h4>Category</h4>
+                <span class="category-tag">{{ getTemplate(selectedTemplate)?.category | titlecase }}</span>
+              </div>
+
+              <div class="detail-section">
+                <h4>Popularity</h4>
+                <div class="popularity-meter">
+                  <div class="popularity-bar">
+                    <div class="popularity-fill" [style.width.%]="getTemplate(selectedTemplate)?.popularity || 0">
+                    </div>
                   </div>
+                  <span class="popularity-text">{{ getTemplate(selectedTemplate)?.popularity }}% popularity</span>
                 </div>
-                <span class="popularity-text">{{ getTemplate(selectedTemplate)?.popularity }}% popularity</span>
               </div>
             </div>
-          </div>
 
-          <div class="preview-actions">
-            <button class="preview-action-btn secondary" (click)="downloadTemplate(selectedTemplate!)">
-              <span class="btn-icon">💾</span>
-              <span class="btn-text">Download</span>
-            </button>
-            <button class="preview-action-btn primary" (click)="useTemplate(selectedTemplate!)">
-              <span class="btn-icon">✨</span>
-              <span class="btn-text">Use This Template</span>
-            </button>
+            <div class="preview-actions">
+              <button class="preview-action-btn secondary" (click)="downloadTemplate(selectedTemplate!)">
+                <span class="btn-icon">💾</span>
+                <span class="btn-text">Download</span>
+              </button>
+              <button class="preview-action-btn primary" (click)="useTemplate(selectedTemplate!)">
+                <span class="btn-icon">✨</span>
+                <span class="btn-text">Use This Template</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  }
+  </ng-container>
 </div>
